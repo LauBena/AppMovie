@@ -11,17 +11,17 @@ namespace AppMovie.Models {
         [Display(Name = "Nombre del Socio")]
         [Required(ErrorMessage = "Este valor es Obligatorio.")]
         [MaxLength(150, ErrorMessage = "El largo maximo es de {0} caracteres.")]
-        public string PartnerName { get; set; }
+        public string? PartnerName { get; set; }
 
 
         [Display(Name = "Dirección")]
         [MaxLength(100, ErrorMessage = "El largo maximo es de {0} caracteres.")]
-        public string PartnerDirection { get; set; }
+        public string? PartnerDirection { get; set; }
 
 
         [Display(Name = "Telefono")]
         [MaxLength(100, ErrorMessage = "El largo máximo es de {0} caracteres.")]
-        public string PartnerPhone { get; set; }
+        public string? PartnerPhone { get; set; }
 
 
         [Display(Name = "Fecha de Nacimiento")]
@@ -40,6 +40,6 @@ namespace AppMovie.Models {
 
 
         public int LocationID { get; set; }
-        public virtual Location Locations { get; set; }
+        public virtual Location? Locations { get; set; }
     }
 }

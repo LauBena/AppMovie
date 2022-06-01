@@ -15,6 +15,6 @@ namespace AppMovie.Models
         [Display(Name = "Nombre de la Productora")] //Cambiamos 'seccion' por productora
         [Required(ErrorMessage = "Este valor es obligatorio.")]
         [MaxLength(100, ErrorMessage = "El largo maximo es de {0} caracteres.")]
-        public string ProducerName { get; set; }
+        public string? ProducerName { get; set; }
     }
 }
