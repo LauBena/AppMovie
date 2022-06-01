@@ -19,4 +19,6 @@ using AppMovie.Models;
         public DbSet<AppMovie.Models.Location> Location { get; set; }
 
         public DbSet<AppMovie.Models.Partner> Partner { get; set; }
+
+        public DbSet<AppMovie.Models.Movie> Movie { get; set; }
     }

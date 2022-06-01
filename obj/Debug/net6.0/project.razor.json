@@ -16303,6 +16303,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Movies\\Delete.cshtml",
+      "TargetPath": "Views\\Movies\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Sections\\Edit.cshtml",
       "TargetPath": "Views\\Sections\\Edit.cshtml",
       "FileKind": "mvc"
@@ -16313,8 +16318,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Movies\\Details.cshtml",
+      "TargetPath": "Views\\Movies\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Producers\\Delete.cshtml",
       "TargetPath": "Views\\Producers\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Movies\\Edit.cshtml",
+      "TargetPath": "Views\\Movies\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16348,8 +16363,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Movies\\Index.cshtml",
+      "TargetPath": "Views\\Movies\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Partners\\Edit.cshtml",
       "TargetPath": "Views\\Partners\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Movies\\Create.cshtml",
+      "TargetPath": "Views\\Movies\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
