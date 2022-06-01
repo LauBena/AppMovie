@@ -11,8 +11,15 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  background-color:gainsboro;
+}
+
+.btn{
+  border: 2px solid black;
+  font-family: roboto, sans-serif;
 }
 
 body {
   margin-bottom: 60px;
+  background-color: gainsboro;
 }

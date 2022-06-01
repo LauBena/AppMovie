@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMovie.Migrations
 {
     [DbContext(typeof(AppMovieContext))]
-    [Migration("20220601172536_MovieModels")]
-    partial class MovieModels
+    [Migration("20220601220224_PartnerModels")]
+    partial class PartnerModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,32 @@ namespace AppMovie.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("AppMovie.Models.Country", b =>
+                {
+                    b.Property<int>("CountryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CountryID"), 1L, 1);
+
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("LocalidadID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LocationID")
+                        .HasColumnType("int");
+
+                    b.HasKey("CountryID");
+
+                    b.HasIndex("LocationID");
+
+                    b.ToTable("Country");
+                });
 
             modelBuilder.Entity("AppMovie.Models.Gender", b =>
                 {
@@ -168,6 +194,15 @@ namespace AppMovie.Migrations
                     b.ToTable("Section");
                 });
 
+            modelBuilder.Entity("AppMovie.Models.Country", b =>
+                {
+                    b.HasOne("AppMovie.Models.Location", "Location")
+                        .WithMany("Countries")
+                        .HasForeignKey("LocationID");
+
+                    b.Navigation("Location");
+                });
+
             modelBuilder.Entity("AppMovie.Models.Movie", b =>
                 {
                     b.HasOne("AppMovie.Models.Gender", "Gender")
@@ -213,6 +248,8 @@ namespace AppMovie.Migrations
 
             modelBuilder.Entity("AppMovie.Models.Location", b =>
                 {
+                    b.Navigation("Countries");
+
                     b.Navigation("Partners");
                 });
 

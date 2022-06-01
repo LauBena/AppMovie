@@ -1,7 +1,7 @@
 @model IEnumerable<AppMovie.Models.Section>
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <h1>Listado de Secciones</h1>
     <hr>
 <p>
-    <a asp-action="Create" class="btn btn-info">Nueva Seccion</a>
+    <a asp-action="Create" class="btn btn-light">Nueva Seccion</a>
 </p>
 <table class="table">
     <thead>
@@ -33,9 +33,9 @@
                 @Html.DisplayFor(modelItem => item.SectionName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SectionID" class="btn btn-primary">Editar</a> 
-                <a asp-action="Details" asp-route-id="@item.SectionID">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.SectionID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.SectionID" class="btn">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.SectionID" class="btn">Detalles</a>
+                <a asp-action="Delete" asp-route-id="@item.SectionID" class="btn btn-danger">Borrar</a>
             </td>
         </tr>
 }

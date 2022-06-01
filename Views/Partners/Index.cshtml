@@ -9,11 +9,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Listado de Partners</title>
+    <title>Index</title>
 </head>
 <body>
 <p>
-    <a asp-action="Create">Crear</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.Locations.LocationName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PartnerID">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.PartnerID">Detailles</a> |
-                <a asp-action="Delete" asp-route-id="@item.PartnerID">Borrar</a>
+                <a asp-action="Edit" asp-route-id="@item.PartnerID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PartnerID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PartnerID">Delete</a>
             </td>
         </tr>
 }
