@@ -18,5 +18,6 @@ namespace AppMovie.Models{
 
 
         public virtual ICollection<Partner>? Partners { get; set; }
+        public virtual ICollection<Country>? Countries { get; set; }
     }
 }

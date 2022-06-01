@@ -21,4 +21,6 @@ using AppMovie.Models;
         public DbSet<AppMovie.Models.Partner> Partner { get; set; }
 
         public DbSet<AppMovie.Models.Movie> Movie { get; set; }
+
+        public DbSet<AppMovie.Models.Country> Country { get; set; }
     }

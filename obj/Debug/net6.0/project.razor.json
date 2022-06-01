@@ -16323,6 +16323,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Countries\\Delete.cshtml",
+      "TargetPath": "Views\\Countries\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Producers\\Delete.cshtml",
       "TargetPath": "Views\\Producers\\Delete.cshtml",
       "FileKind": "mvc"
@@ -16363,8 +16368,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Countries\\Edit.cshtml",
+      "TargetPath": "Views\\Countries\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Movies\\Index.cshtml",
       "TargetPath": "Views\\Movies\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Countries\\Index.cshtml",
+      "TargetPath": "Views\\Countries\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16380,6 +16395,11 @@
     {
       "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Producers\\Create.cshtml",
       "TargetPath": "Views\\Producers\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Countries\\Details.cshtml",
+      "TargetPath": "Views\\Countries\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16425,6 +16445,11 @@
     {
       "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\laura\\OneDrive\\Escritorio\\EZPELETA\\programacionII\\AppMovie\\Views\\Countries\\Create.cshtml",
+      "TargetPath": "Views\\Countries\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
