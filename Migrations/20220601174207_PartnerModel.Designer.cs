@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMovie.Migrations
 {
     [DbContext(typeof(AppMovieContext))]
-    [Migration("20220601173940_PartnerModels")]
-    partial class PartnerModels
+    [Migration("20220601174207_PartnerModel")]
+    partial class PartnerModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

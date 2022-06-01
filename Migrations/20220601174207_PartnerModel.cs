@@ -4,7 +4,7 @@
 
 namespace AppMovie.Migrations
 {
-    public partial class PartnerMigration : Migration
+    public partial class PartnerModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
