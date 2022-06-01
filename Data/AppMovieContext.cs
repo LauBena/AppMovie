@@ -7,7 +7,7 @@ using AppMovie.Models;
 
     public class AppMovieContext : DbContext
     {
-        public AppMovieContext (DbContextOptions<AppMovieContext> options)
+        public AppMovieContext(DbContextOptions<AppMovieContext> options)
             : base(options)
         {
         }
