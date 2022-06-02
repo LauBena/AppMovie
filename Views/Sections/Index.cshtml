@@ -35,11 +35,20 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SectionID" class="btn">Editar</a>
                 <a asp-action="Details" asp-route-id="@item.SectionID" class="btn">Detalles</a>
-                <a asp-action="Delete" asp-route-id="@item.SectionID" class="btn btn-danger">Borrar</a>
+                <a onclick="eliminarSeccion(@item.SectionID);" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<script>
+    function eliminarSeccion(id){
+        var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
+        if(eliminar){
+            location.href = "~/Sections/DeleteConfirmed/" + id;
+        }
+    }
+</script>
 </body>
 </html>

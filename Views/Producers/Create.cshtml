@@ -1,7 +1,7 @@
 @model AppMovie.Models.Producer
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProducerName" class="control-label"></label>
-                <input asp-for="ProducerName" class="form-control" />
+                <input asp-for="ProducerName" class="form-control" onkeyup="this.value = this.value.toUpperCase()"/>
                 <span asp-validation-for="ProducerName" class="text-danger"></span>
             </div>
             <div class="form-group">

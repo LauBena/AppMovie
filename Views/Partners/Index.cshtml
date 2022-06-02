@@ -1,7 +1,7 @@
 @model IEnumerable<AppMovie.Models.Partner>
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
 <!DOCTYPE html>
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.Locations.LocationName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PartnerID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PartnerID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PartnerID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.PartnerID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.PartnerID">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.PartnerID">Eliminar</a>
             </td>
         </tr>
 }
