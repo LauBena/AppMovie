@@ -58,6 +58,8 @@ namespace AppMovie.Controllers
         {
             if (ModelState.IsValid)
             {
+                section.SectionName = section.SectionName.ToUpper();
+
                 _context.Add(section);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
