@@ -10,7 +10,7 @@ namespace AppMovie.Models
         public int SectionID { get; set; } //sectionID: identifica un objeto unico. con esto nos damos cuenta rapido cuando cometemos un herror
 
 
-        [Display(Name = "Nombre de la Seccion")]
+        [Display(Name = "Nombre de la Sección")]
         [Required(ErrorMessage = "Este valor es obligatorio.")]
         [MaxLength(100, ErrorMessage = "El largo maximo es de {0} caracteres.")]
         public string? SectionName { get; set; }

@@ -34,15 +34,7 @@ namespace AppMovie.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("LocalidadID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LocationID")
-                        .HasColumnType("int");
-
                     b.HasKey("CountryID");
-
-                    b.HasIndex("LocationID");
 
                     b.ToTable("Country");
                 });
@@ -73,12 +65,17 @@ namespace AppMovie.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationID"), 1L, 1);
 
+                    b.Property<int>("CountryID")
+                        .HasColumnType("int");
+
                     b.Property<string>("LocationName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("LocationID");
+
+                    b.HasIndex("CountryID");
 
                     b.ToTable("Location");
                 });
@@ -192,13 +189,15 @@ namespace AppMovie.Migrations
                     b.ToTable("Section");
                 });
 
-            modelBuilder.Entity("AppMovie.Models.Country", b =>
+            modelBuilder.Entity("AppMovie.Models.Location", b =>
                 {
-                    b.HasOne("AppMovie.Models.Location", "Location")
-                        .WithMany("Countries")
-                        .HasForeignKey("LocationID");
+                    b.HasOne("AppMovie.Models.Country", "Countries")
+                        .WithMany("Locations")
+                        .HasForeignKey("CountryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Location");
+                    b.Navigation("Countries");
                 });
 
             modelBuilder.Entity("AppMovie.Models.Movie", b =>
@@ -239,6 +238,11 @@ namespace AppMovie.Migrations
                     b.Navigation("Locations");
                 });
 
+            modelBuilder.Entity("AppMovie.Models.Country", b =>
+                {
+                    b.Navigation("Locations");
+                });
+
             modelBuilder.Entity("AppMovie.Models.Gender", b =>
                 {
                     b.Navigation("Movies");
@@ -246,8 +250,6 @@ namespace AppMovie.Migrations
 
             modelBuilder.Entity("AppMovie.Models.Location", b =>
                 {
-                    b.Navigation("Countries");
-
                     b.Navigation("Partners");
                 });
 
