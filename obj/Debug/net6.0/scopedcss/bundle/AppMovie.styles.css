@@ -1,6 +1,15 @@
 /* _content/AppMovie/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+/* body{
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNB9GwiXDR1T2ue1PgPag-xFhUVbWUA_uSgA&usqp=CAU");
+  background-repeat: no-repeat center;
+}
+
+header {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNB9GwiXDR1T2ue1PgPag-xFhUVbWUA_uSgA&usqp=CAU");
+  background-repeat: no-repeat center;
+} */
 
 a.navbar-brand[b-4skxq1ckwj] {
   white-space: normal;
