@@ -13,7 +13,7 @@
 </head>
 <body>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Nuevo País</a>
 </p>
 <table class="table">
     <thead>
@@ -21,9 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CountryName)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.LocalidadID)
-            </th>
+            </th> *@
             <th></th>
         </tr>
     </thead>
@@ -34,16 +34,22 @@
                 @Html.DisplayFor(modelItem => item.CountryName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LocalidadID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CountryID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CountryID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CountryID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.CountryID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.CountryID">Detalles</a> |
+                <a onclick="eliminarSeccion(@item.CountryID);" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<script>
+    function eliminarSeccion(id){
+        var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
+        if(eliminar){
+            location.href = "../../Countries/DeleteConfirmed/" + id;
+        }
+    }
+</script>
 </body>
 </html>

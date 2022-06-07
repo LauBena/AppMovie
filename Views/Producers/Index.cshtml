@@ -13,7 +13,7 @@
 </head>
 <body>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Nueva Productora</a>
 </p>
 <table class="table">
     <thead>
@@ -31,13 +31,22 @@
                 @Html.DisplayFor(modelItem => item.ProducerName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ProducerID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProducerID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProducerID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ProducerID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ProducerID">Detalles</a> |
+                <a onclick="eliminarSeccion(@item.ProducerID);" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<script>
+    function eliminarSeccion(id){
+        var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
+        if(eliminar){
+            location.href = "../../Producers/DeleteConfirmed/" + id;
+        }
+    }
+</script>
 </body>
 </html>
