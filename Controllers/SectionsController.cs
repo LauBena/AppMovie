@@ -137,8 +137,8 @@ namespace AppMovie.Controllers
         // }
 
         // POST: Sections/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        // [HttpPost, ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var section = await _context.Section.FindAsync(id);

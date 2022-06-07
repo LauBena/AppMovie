@@ -22,7 +22,7 @@ namespace AppMovie.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Location.ToListAsync());
+            return View(await _context.Location.Include(m => m.Countries).ToListAsync());
         }
 
         // GET: Locations/Details/5
@@ -46,6 +46,7 @@ namespace AppMovie.Controllers
         // GET: Locations/Create
         public IActionResult Create()
         {
+            ViewData["CountryID"] = new SelectList(_context.Country, "CountryID", "CountryName");
             return View();
         }
 
@@ -54,7 +55,7 @@ namespace AppMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocationID,LocationName")] Location location)
+        public async Task<IActionResult> Create([Bind("LocationID,LocationName, CountryID")] Location location)
         {
             if (ModelState.IsValid)
             {
