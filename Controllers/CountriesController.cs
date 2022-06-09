@@ -54,7 +54,7 @@ namespace AppMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CountryID,CountryName,LocalidadID")] Country country)
+        public async Task<IActionResult> Create([Bind("CountryID,CountryName")] Country country)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace AppMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CountryID,CountryName,LocalidadID")] Country country)
+        public async Task<IActionResult> Edit(int id, [Bind("CountryID,CountryName")] Country country)
         {
             if (id != country.CountryID)
             {
@@ -135,13 +135,16 @@ namespace AppMovie.Controllers
         }
 
         // POST: Countries/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        // [HttpPost, ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var country = await _context.Country.FindAsync(id);
+            if(country != null){
             _context.Country.Remove(country);
             await _context.SaveChangesAsync();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

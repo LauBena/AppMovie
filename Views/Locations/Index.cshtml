@@ -9,11 +9,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Listado de Locaciones</title>
+    <title>Index</title>
 </head>
 <body>
 <p>
-    <a asp-action="Create">Nueva Localidad</a>
+    <a asp-action="Create">Crear Nueva Localidad</a>
 </p>
 <table class="table">
     <thead>
@@ -22,8 +22,9 @@
                 @Html.DisplayNameFor(model => model.LocationName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Countries.CountryName)
+                @Html.DisplayNameFor(model => model.Countries)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -37,8 +38,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.LocationID">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.LocationID">Detalles</a> |
-                <a onclick="eliminarSeccion(@item.LocationID);" class="btn btn-danger">Eliminar</a>
+                <a onclick="eliminarUbicacion(@item.LocationID)" class="btn-delete">Eliminar</a>
             </td>
         </tr>
 }
@@ -46,12 +46,12 @@
 </table>
 
 <script>
-    function eliminarSeccion(id){
-        var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
-        if(eliminar){
-            location.href = "../../Locations/DeleteConfirmed/" + id;
-        }
+    function eliminarUbicacion(id){
+    var eliminar = confirm("Esta seguro que desea eliminar esta Ubicacion?");
+    if(eliminar){
+        location.href = "../../Locations/DeleteConfirmed/" + id;
     }
+}
 </script>
 </body>
 </html>

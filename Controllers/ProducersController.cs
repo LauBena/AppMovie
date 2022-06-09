@@ -26,22 +26,22 @@ namespace AppMovie.Controllers
         }
 
         // GET: Producers/Details/5
-        // public async Task<IActionResult> Details(int? id)
-        // {
-        //     if (id == null)
-        //     {
-        //         return NotFound();
-        //     }
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //     var producer = await _context.Producer
-        //         .FirstOrDefaultAsync(m => m.ProducerID == id);
-        //     if (producer == null)
-        //     {
-        //         return NotFound();
-        //     }
+            var producer = await _context.Producer
+                .FirstOrDefaultAsync(m => m.ProducerID == id);
+            if (producer == null)
+            {
+                return NotFound();
+            }
 
-        //     return View(producer);
-        // }
+            return View(producer);
+        }
 
         // GET: Producers/Create
         public IActionResult Create()
@@ -117,31 +117,34 @@ namespace AppMovie.Controllers
         }
 
         // GET: Producers/Delete/5
-        // public async Task<IActionResult> Delete(int? id)
-        // {
-        //     if (id == null)
-        //     {
-        //         return NotFound();
-        //     }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //     var producer = await _context.Producer
-        //         .FirstOrDefaultAsync(m => m.ProducerID == id);
-        //     if (producer == null)
-        //     {
-        //         return NotFound();
-        //     }
+            var producer = await _context.Producer
+                .FirstOrDefaultAsync(m => m.ProducerID == id);
+            if (producer == null)
+            {
+                return NotFound();
+            }
 
-        //     return View(producer);
-        // }
+            return View(producer);
+        }
 
         // POST: Producers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        // [HttpPost, ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var producer = await _context.Producer.FindAsync(id);
+            if(producer != null){
             _context.Producer.Remove(producer);
             await _context.SaveChangesAsync();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

@@ -22,7 +22,8 @@ namespace AppMovie.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Location.Include(m => m.Countries).ToListAsync());
+            var appMovieContext = _context.Location.Include(l => l.Countries);
+            return View(await appMovieContext.ToListAsync());
         }
 
         // GET: Locations/Details/5
@@ -34,6 +35,7 @@ namespace AppMovie.Controllers
             }
 
             var location = await _context.Location
+                .Include(l => l.Countries)
                 .FirstOrDefaultAsync(m => m.LocationID == id);
             if (location == null)
             {
@@ -55,7 +57,7 @@ namespace AppMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LocationID,LocationName, CountryID")] Location location)
+        public async Task<IActionResult> Create([Bind("LocationID,LocationName,CountryID")] Location location)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +65,7 @@ namespace AppMovie.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CountryID"] = new SelectList(_context.Country, "CountryID", "CountryName", location.CountryID);
             return View(location);
         }
 
@@ -79,6 +82,7 @@ namespace AppMovie.Controllers
             {
                 return NotFound();
             }
+            ViewData["CountryID"] = new SelectList(_context.Country, "CountryID", "CountryName", location.CountryID);
             return View(location);
         }
 
@@ -87,7 +91,7 @@ namespace AppMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LocationID,LocationName")] Location location)
+        public async Task<IActionResult> Edit(int id, [Bind("LocationID,LocationName,CountryID")] Location location)
         {
             if (id != location.LocationID)
             {
@@ -114,6 +118,7 @@ namespace AppMovie.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CountryID"] = new SelectList(_context.Country, "CountryID", "CountryName", location.CountryID);
             return View(location);
         }
 
@@ -126,6 +131,7 @@ namespace AppMovie.Controllers
             }
 
             var location = await _context.Location
+                .Include(l => l.Countries)
                 .FirstOrDefaultAsync(m => m.LocationID == id);
             if (location == null)
             {
@@ -136,13 +142,16 @@ namespace AppMovie.Controllers
         }
 
         // POST: Locations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        // [HttpPost, ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var location = await _context.Location.FindAsync(id);
+            if(location != null){
             _context.Location.Remove(location);
             await _context.SaveChangesAsync();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

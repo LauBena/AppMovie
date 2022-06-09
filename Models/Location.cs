@@ -17,6 +17,7 @@ namespace AppMovie.Models{
 
         [Display(Name = "Pais")]
         public int CountryID { get; set; }
+
         public virtual Country? Countries { get; set; }
         public virtual ICollection<Partner>? Partners { get; set; }
     }

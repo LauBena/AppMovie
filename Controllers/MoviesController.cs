@@ -50,7 +50,7 @@ namespace AppMovie.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
-            ViewData["GenderID"] = new SelectList(_context.Set<Gender>(), "GenderID", "GenderName");
+            ViewData["GenderID"] = new SelectList(_context.Gender, "GenderID", "GenderName");
             ViewData["ProducerID"] = new SelectList(_context.Producer, "ProducerID", "ProducerName");
             ViewData["SectionID"] = new SelectList(_context.Section, "SectionID", "SectionName");
             return View();
@@ -69,7 +69,7 @@ namespace AppMovie.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderID"] = new SelectList(_context.Set<Gender>(), "GenderID", "GenderName", movie.GenderID);
+            ViewData["GenderID"] = new SelectList(_context.Gender, "GenderID", "GenderName", movie.GenderID);
             ViewData["ProducerID"] = new SelectList(_context.Producer, "ProducerID", "ProducerName", movie.ProducerID);
             ViewData["SectionID"] = new SelectList(_context.Section, "SectionID", "SectionName", movie.SectionID);
             return View(movie);
@@ -88,7 +88,7 @@ namespace AppMovie.Controllers
             {
                 return NotFound();
             }
-            ViewData["GenderID"] = new SelectList(_context.Set<Gender>(), "GenderID", "GenderName", movie.GenderID);
+            ViewData["GenderID"] = new SelectList(_context.Gender, "GenderID", "GenderName", movie.GenderID);
             ViewData["ProducerID"] = new SelectList(_context.Producer, "ProducerID", "ProducerName", movie.ProducerID);
             ViewData["SectionID"] = new SelectList(_context.Section, "SectionID", "SectionName", movie.SectionID);
             return View(movie);
@@ -126,7 +126,7 @@ namespace AppMovie.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderID"] = new SelectList(_context.Set<Gender>(), "GenderID", "GenderName", movie.GenderID);
+            ViewData["GenderID"] = new SelectList(_context.Gender, "GenderID", "GenderName", movie.GenderID);
             ViewData["ProducerID"] = new SelectList(_context.Producer, "ProducerID", "ProducerName", movie.ProducerID);
             ViewData["SectionID"] = new SelectList(_context.Section, "SectionID", "SectionName", movie.SectionID);
             return View(movie);
@@ -154,13 +154,16 @@ namespace AppMovie.Controllers
         }
 
         // POST: Movies/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        // [HttpPost, ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var movie = await _context.Movie.FindAsync(id);
+            if(movie != null){
             _context.Movie.Remove(movie);
             await _context.SaveChangesAsync();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

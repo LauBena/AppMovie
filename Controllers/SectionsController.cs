@@ -25,23 +25,23 @@ namespace AppMovie.Controllers
             return View(await _context.Section.ToListAsync());
         }
 
-        //  // GET: Sections/Details/5
-        //  public async Task<IActionResult> Details(int? id)
-        //  {
-        //      if (id == null)
-        //      {
-        //         return NotFound();
-        //      }
+        // GET: Sections/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //     var section = await _context.Section
-        //          .FirstOrDefaultAsync(m => m.SectionID == id);
-        //     if (section == null)
-        //      {
-        //          return NotFound();
-        //      }
+            var section = await _context.Section
+                .FirstOrDefaultAsync(m => m.SectionID == id);
+            if (section == null)
+            {
+                return NotFound();
+            }
 
-        //      return View(section);
-        // }
+            return View(section);
+        }
 
         // GET: Sections/Create
         public IActionResult Create()
@@ -58,8 +58,6 @@ namespace AppMovie.Controllers
         {
             if (ModelState.IsValid)
             {
-                section.SectionName = section.SectionName.ToUpper();
-
                 _context.Add(section);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -118,23 +116,23 @@ namespace AppMovie.Controllers
             return View(section);
         }
 
-         // GET: Sections/Delete/5
-        // public async Task<IActionResult> Delete(int? id)
-        // {
-        //     if (id == null)
-        //     {
-        //         return NotFound();
-        //     }
+        // GET: Sections/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //     var section = await _context.Section
-        //         .FirstOrDefaultAsync(m => m.SectionID == id);
-        //     if (section == null)
-        //     {
-        //         return NotFound();
-        //     }
+            var section = await _context.Section
+                .FirstOrDefaultAsync(m => m.SectionID == id);
+            if (section == null)
+            {
+                return NotFound();
+            }
 
-        //     return View(section);
-        // }
+            return View(section);
+        }
 
         // POST: Sections/Delete/5
         // [HttpPost, ActionName("Delete")]
@@ -142,10 +140,13 @@ namespace AppMovie.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var section = await _context.Section.FindAsync(id);
-            _context.Section.Remove(section);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if(section != null){
+                _context.Section.Remove(section);
+                await _context.SaveChangesAsync();
+            }
+        return RedirectToAction(nameof(Index));
         }
+
 
         private bool SectionExists(int id)
         {

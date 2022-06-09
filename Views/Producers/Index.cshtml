@@ -13,7 +13,7 @@
 </head>
 <body>
 <p>
-    <a asp-action="Create">Nueva Productora</a>
+    <a asp-action="Create">Crear Nueva Productora</a>
 </p>
 <table class="table">
     <thead>
@@ -32,8 +32,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProducerID">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.ProducerID">Detalles</a> |
-                <a onclick="eliminarSeccion(@item.ProducerID);" class="btn btn-danger">Eliminar</a>
+                <a onclick="eliminarProductora(@item.ProducerID)" class="btn-delete">Eliminar</a>
             </td>
         </tr>
 }
@@ -41,12 +40,12 @@
 </table>
 
 <script>
-    function eliminarSeccion(id){
-        var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
-        if(eliminar){
-            location.href = "../../Producers/DeleteConfirmed/" + id;
-        }
+function eliminarProductora(id){
+    var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
+    if(eliminar){
+        location.href = "../../Producers/DeleteConfirmed/" + id;
     }
+}
 </script>
 </body>
 </html>

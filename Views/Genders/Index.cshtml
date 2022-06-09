@@ -13,7 +13,7 @@
 </head>
 <body>
 <p>
-    <a asp-action="Create">Nuevo Género</a>
+    <a asp-action="Create">Crear Nuevo Género</a>
 </p>
 <table class="table">
     <thead>
@@ -32,8 +32,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.GenderID">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.GenderID">Detalles</a> |
-                <a onclick="eliminarSeccion(@item.GenderID);" class="btn btn-danger">Eliminar</a>
+                <a onclick="eliminarGender(@item.GenderID)" class="btn-delete">Eliminar</a>
             </td>
         </tr>
 }
@@ -41,12 +40,13 @@
 </table>
 
 <script>
-    function eliminarSeccion(id){
-        var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
-        if(eliminar){
-            location.href = "../../Genders/DeleteConfirmed/" + id;
-        }
+    function eliminarGender(id){
+    console.log(id);
+    var eliminar = confirm("Esta seguro que desea eliminar este genero?");
+    if(eliminar){
+        location.href = "../../Genders/DeleteConfirmed/" + id;
     }
+}
 </script>
 </body>
 </html>

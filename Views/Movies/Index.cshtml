@@ -13,7 +13,7 @@
 </head>
 <body>
 <p>
-    <a asp-action="Create">Nueva Película</a>
+    <a asp-action="Create">Crear Nueva Película</a>
 </p>
 <table class="table">
     <thead>
@@ -62,21 +62,19 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.MovieID">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.MovieID">Detalles</a> |
-                <a onclick="eliminarSeccion(@item.MovieID);" class="btn btn-danger">Eliminar</a>
+                <a onclick="eliminarMovie(@item.MovieID)" class="btn-delete">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-
 <script>
-    function eliminarSeccion(id){
-        var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
-        if(eliminar){
-            location.href = "../../Movies/DeleteConfirmed/" + id;
-        }
+function eliminarMovie(id){
+    var eliminar = confirm("Esta seguro que desea eliminar a este socio?");
+    if(eliminar){
+        location.href = "../../Movies/DeleteConfirmed/" + id;
     }
+}
 </script>
 </body>
 </html>

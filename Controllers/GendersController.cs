@@ -135,13 +135,16 @@ namespace AppMovie.Controllers
         }
 
         // POST: Genders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        // [HttpPost, ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var gender = await _context.Gender.FindAsync(id);
+            if(gender != null){
             _context.Gender.Remove(gender);
             await _context.SaveChangesAsync();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
