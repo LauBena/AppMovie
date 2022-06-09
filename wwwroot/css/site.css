@@ -29,7 +29,7 @@ body {
 .create-link{
   text-decoration: none;
   font-size: 30px;
-  font-family:cursive;
+  font-family: 'Monoton', cursive;
 }
 
 
@@ -177,13 +177,6 @@ a, th, label, nav-item, td{
   transition: 0.2s;
 }
 
-.btn-create:hover{
-  color: #2196f3;
-  background-color: #2196f3;
-  box-shadow: 0 0 10 px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
-  transition-delay: 1s;
-}
-
 
 .btn-delete{
   color: #2196f3;
@@ -192,11 +185,4 @@ a, th, label, nav-item, td{
   text-decoration: none;
   overflow: hidden;
   transition: 0.2s;
-}
-
-.btn-delete:hover{
-  color: #2196f3;
-  background-color: #2196f3;
-  box-shadow: 0 0 10 px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
-  transition-delay: 1s;
 }
