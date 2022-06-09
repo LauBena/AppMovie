@@ -26,6 +26,12 @@ body {
   background-repeat: no-repeat;
 }
 
+.create-link{
+  text-decoration: none;
+  font-size: 30px;
+  font-family:cursive;
+}
+
 
 /* texto home */
 
