@@ -8,149 +8,149 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AppMovie
 build_property.RootNamespace = AppMovie
-build_property.ProjectDir = C:\Users\laura\OneDrive\Escritorio\EZPELETA\programacionII\AppMovie\
+build_property.ProjectDir = c:\Users\laura\OneDrive\Escritorio\EZPELETA\programacionII\AppMovie\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\laura\OneDrive\Escritorio\EZPELETA\programacionII\AppMovie
+build_property.MSBuildProjectDirectory = c:\Users\laura\OneDrive\Escritorio\EZPELETA\programacionII\AppMovie
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Countries/Create.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Countries/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyaWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Countries/Delete.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Countries/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyaWVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Countries/Edit.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Countries/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyaWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Countries/Index.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Countries/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyaWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Genders/Create.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Genders/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZGVyc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Genders/Delete.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Genders/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZGVyc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Genders/Edit.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Genders/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZGVyc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Genders/Index.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Genders/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZGVyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Home/Index.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Home/Privacy.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Locations/Create.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Locations/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Locations/Delete.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Locations/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Locations/Edit.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Locations/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Locations/Index.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Locations/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Movies/Create.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Movies/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Movies/Delete.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Movies/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Movies/Edit.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Movies/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Movies/Index.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Movies/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Partners/Create.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Partners/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Partners/Delete.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Partners/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Partners/Edit.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Partners/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Partners/Index.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Partners/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydG5lcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Producers/Create.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Producers/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Producers/Delete.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Producers/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Producers/Edit.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Producers/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Producers/Index.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Producers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Sections/Create.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Sections/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VjdGlvbnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Sections/Delete.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Sections/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VjdGlvbnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Sections/Edit.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Sections/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VjdGlvbnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Sections/Index.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Sections/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VjdGlvbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Shared/Error.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/_ViewImports.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/_ViewStart.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Shared/_Layout.cshtml]
+[c:/Users/laura/OneDrive/Escritorio/EZPELETA/programacionII/AppMovie/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-4skxq1ckwj
