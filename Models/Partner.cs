@@ -19,7 +19,7 @@ namespace AppMovie.Models {
         public string? PartnerDirection { get; set; }
 
 
-        [Display(Name = "Telefono")]
+        [Display(Name = "Teléfono")]
         [MaxLength(100, ErrorMessage = "El largo máximo es de {0} caracteres.")]
         public string? PartnerPhone { get; set; }
 

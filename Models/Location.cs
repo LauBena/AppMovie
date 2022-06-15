@@ -15,7 +15,7 @@ namespace AppMovie.Models{
         public string? LocationName { get; set; } //el signo de pregunta quiere decir que acepta valores nulos o espacios vacios
 
 
-        [Display(Name = "Pais")]
+        [Display(Name = "País")]
         public int CountryID { get; set; }
 
         public virtual Country? Countries { get; set; }

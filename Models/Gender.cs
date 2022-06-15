@@ -8,7 +8,7 @@ namespace AppMovie.Models
         public int GenderID { get; set; }
 
 
-        [Display(Name = "Nombre del Genero")]
+        [Display(Name = "Nombre del Género")]
         [Required(ErrorMessage = "Este valor es obligatorio.")]
         [MaxLength(50, ErrorMessage = "El largo maximo es de {0} caracteres.")]
         public string? GenderName { get; set; }

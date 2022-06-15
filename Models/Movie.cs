@@ -13,7 +13,7 @@ namespace AppMovie.Models
         [MaxLength(100, ErrorMessage = "El largo maximo es de {0} caracteres.")]
         public string? MovieName { get; set; }
 
-        [Display(Name = "Descipcion de la Pelicula")]
+        [Display(Name = "Descipción de la Película")]
         public string? MovieDescription { get; set; }
 
         [Display(Name = "Fecha de Lanzamiento")]
@@ -22,12 +22,12 @@ namespace AppMovie.Models
 
 
 
-        [Display(Name = "Seccion")]
+        [Display(Name = "Sección")]
         public int SectionID { get; set; }
         public virtual Section? Section { get; set; }
 
 
-        [Display(Name = "Genero")]
+        [Display(Name = "Género")]
         public int GenderID { get; set; }
         public virtual Gender? Gender  { get; set; }
 

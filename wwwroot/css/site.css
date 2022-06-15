@@ -107,6 +107,7 @@ text-flicker-in-glow{0%
 
 h4{
   color: white;
+  font-family: 'Monoton', cursive;
 }
 
 a, th, label, nav-item, td{
@@ -169,7 +170,7 @@ a, th, label, nav-item, td{
 }
 
 .btn-create{
-  color: black;
+  color:#0eb350;
   text-transform: uppercase;
   letter-spacing: 4px;
   text-decoration: none;
@@ -179,7 +180,7 @@ a, th, label, nav-item, td{
 
 
 .btn-delete{
-  color: #2196f3;
+  color: #15f4ee;
   text-transform: uppercase;
   letter-spacing: 4px;
   text-decoration: none;
