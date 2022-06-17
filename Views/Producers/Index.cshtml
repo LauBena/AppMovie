@@ -31,7 +31,7 @@
                 @Html.DisplayFor(modelItem => item.ProducerName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ProducerID">Editar</a> |
+                <a asp-action="Edit" asp-route-id="@item.ProducerID" class="btn-edit">Editar</a> |
                 <a onclick="eliminarProductora(@item.ProducerID)" class="btn-delete">Eliminar</a>
             </td>
         </tr>

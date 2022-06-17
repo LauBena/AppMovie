@@ -25,4 +25,10 @@ using AppMovie.Models;
         public DbSet<AppMovie.Models.Country> Country { get; set; }
 
         public DbSet<AppMovie.Models.Gender> Gender { get; set; }
+
+        public DbSet<AppMovie.Models.Rental> Rental { get; set; }
+
+        public DbSet<AppMovie.Models.RentalDetail> RentalDetail { get; set; }
+
+        public DbSet<AppMovie.Models.RentalDetailTemp> RentalDetailTemp { get; set; }
     }

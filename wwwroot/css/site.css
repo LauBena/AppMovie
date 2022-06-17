@@ -187,3 +187,12 @@ a, th, label, nav-item, td{
   overflow: hidden;
   transition: 0.2s;
 }
+
+.btn-edit{
+  color: #15f4ee;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.2s;
+}

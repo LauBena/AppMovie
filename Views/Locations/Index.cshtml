@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Countries.CountryName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.LocationID">Editar</a> |
+                <a asp-action="Edit" asp-route-id="@item.LocationID" class="btn-edit">Editar</a> |
                 <a onclick="eliminarUbicacion(@item.LocationID)" class="btn-delete">Eliminar</a>
             </td>
         </tr>

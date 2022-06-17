@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.Locations.LocationName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PartnerID">Editar</a> |
+                <a asp-action="Edit" asp-route-id="@item.PartnerID" class="btn-edit">Editar</a> |
                 <a onclick="eliminarPartner(@item.PartnerID)" class="btn-delete">Eliminar</a>
             </td>
         </tr>

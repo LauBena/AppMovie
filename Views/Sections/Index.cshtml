@@ -31,7 +31,7 @@
                 @Html.DisplayFor(modelItem => item.SectionName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SectionID">Editar</a> |
+                <a asp-action="Edit" asp-route-id="@item.SectionID" class="btn-edit">Editar</a> |
                 <a onclick="eliminarSeccion(@item.SectionID)" class="btn-delete">Eliminar</a>
             </td>
         </tr>

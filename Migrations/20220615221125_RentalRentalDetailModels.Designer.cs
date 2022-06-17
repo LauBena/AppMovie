@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMovie.Migrations
 {
     [DbContext(typeof(AppMovieContext))]
-    partial class AppMovieContextModelSnapshot : ModelSnapshot
+    [Migration("20220615221125_RentalRentalDetailModels")]
+    partial class RentalRentalDetailModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -216,25 +218,6 @@ namespace AppMovie.Migrations
                     b.HasIndex("RentalID");
 
                     b.ToTable("RentalDetail");
-                });
-
-            modelBuilder.Entity("AppMovie.Models.RentalDetailTemp", b =>
-                {
-                    b.Property<int>("RentalDetailTempID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalDetailTempID"), 1L, 1);
-
-                    b.Property<int>("MovieID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MovieName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("RentalDetailTempID");
-
-                    b.ToTable("RentalDetailTemp");
                 });
 
             modelBuilder.Entity("AppMovie.Models.Section", b =>

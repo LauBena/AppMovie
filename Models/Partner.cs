@@ -41,5 +41,7 @@ namespace AppMovie.Models {
         [Display(Name = "Localidad")]
         public int LocationID { get; set; }
         public virtual Location? Locations { get; set; }
+
+        public virtual ICollection<Rental>? Rentals { get; set; }
     }
 }

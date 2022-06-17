@@ -36,5 +36,7 @@ namespace AppMovie.Models
         [Display(Name = "Productor")]
         public int ProducerID { get; set; }
         public virtual Producer? Producer { get; set; }
+
+        public virtual ICollection<RentalDetail>? RentalDetails { get; set; }
     }
 }
