@@ -26,29 +26,30 @@ namespace AppMovie.Controllers
             return View(await appMovieContext.ToListAsync());
         }
 
-        // GET: Rentals/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        // // GET: Rentals/Details/5
+        // public async Task<IActionResult> Details(int? id)
+        // {
+        //     if (id == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            var rental = await _context.Rental
-                .Include(r => r.Partner)
-                .FirstOrDefaultAsync(m => m.RentalID == id);
-            if (rental == null)
-            {
-                return NotFound();
-            }
+        //     var rental = await _context.Rental
+        //         .Include(r => r.Partner)
+        //         .FirstOrDefaultAsync(m => m.RentalID == id);
+        //     if (rental == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            return View(rental);
-        }
+        //     return View(rental);
+        // }
 
         // GET: Rentals/Create
         public IActionResult Create()
         {
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName");
+            ViewData["MovieID"] = new SelectList(_context.Movie, "MovieID", "MovieName"); //agregamos viewdata de Movie
             return View();
         }
 
@@ -141,9 +142,6 @@ namespace AppMovie.Controllers
             return View(rental);
         }
 
-        // POST: Rentals/Delete/5
-        // [HttpPost, ActionName("Delete")]
-        // [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var rental = await _context.Rental.FindAsync(id);

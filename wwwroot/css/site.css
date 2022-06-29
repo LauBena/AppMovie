@@ -196,3 +196,12 @@ a, th, label, nav-item, td{
   overflow: hidden;
   transition: 0.2s;
 }
+
+.btn-model{
+  color:#0eb350;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.2s;
+}
