@@ -1,7 +1,7 @@
 @model AppMovie.Models.Rental
 
 @{
-    Layout = "_Layout";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -9,11 +9,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
+    <title>Details</title>
 </head>
 <body>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Rental</h4>
     <hr />
@@ -31,12 +30,10 @@
             @Html.DisplayFor(model => model.Partner.PartnerName)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="RentalID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.RentalID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>
 </body>
 </html>
