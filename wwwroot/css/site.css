@@ -178,6 +178,15 @@ a, th, label, nav-item, td{
   transition: 0.2s;
 }
 
+.btn-ediit{
+  color:#0eb350;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
 
 .btn-delete{
   color: #15f4ee;
