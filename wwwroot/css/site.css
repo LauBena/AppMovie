@@ -134,12 +134,17 @@ a, th, label, nav-item, td{
   transform: translateX(-50%) translateY(-50%);
 }
 
+hr{
+  color: white;
+}
+
 .neon{
   font-family: 'Monoton', cursive;
   font-size: 20px;
   color: white;
   text-align: center;
   text-decoration: none;
+  font-size: 1.5em;
 }
 
 .display-4{
@@ -163,9 +168,10 @@ a, th, label, nav-item, td{
   padding:0px 15px;
   text-decoration:none;
   transition: color 0.3s ease-in;
+  font-size: 1.5em;
 }
 #navigationBar > ul > li > a:hover {
-  box-shadow: 0 5px 50px 0  #15f4ee inset, 0 5px 50px 0 #15f4ee;
+  box-shadow: 0 5px 50px 0  #15f4edd8 inset, 0 5px 50px 0 #15f4edd8;
   border-radius: 15px;
 }
 
