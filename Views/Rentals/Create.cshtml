@@ -12,10 +12,7 @@
     <title>Create</title>
 </head>
 <body>
-    <!-- Button trigger modal -->
-<button type="button" class="btn-model" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
+
 <hr>
 
 <!-- Modal -->
@@ -29,8 +26,8 @@
         ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Agregar</button>
       </div>
     </div>
   </div>
@@ -54,13 +51,34 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn-create" />
             </div>
+            <div class="form-group">
+              <a asp-action="Index">Volver a la Lista</a>
+            </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Volver a la Lista</a>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titulo de la pelicula</th>
+            <th>
+<button type="button" class="btn-model" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Agregar Peliculas
+</button></th>
+        </tr>
+    </thead>
+    <tbody>
+@* @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a>Eliminar</a>
+            </td>
+        </tr>
+} *@
+    </tbody>
+</table>
+
 
 </body>
 </html>
