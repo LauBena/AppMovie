@@ -1,7 +1,7 @@
 # Object files
 *.o
 *.ko
-*.obj
+.obj
 *.elf
 
 # Linker output
@@ -50,5 +50,6 @@ dkms.conf
 
 
 #ESTOS ARCHIVOS NO SE SUBEN XQ SON CREADOS AL HACER UN BUILD
-.bin
-.vscode
+bin
+vscode
+obj
