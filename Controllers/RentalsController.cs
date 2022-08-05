@@ -49,8 +49,8 @@ namespace AppMovie.Controllers
         public IActionResult Create()
         {
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName");
-            ViewData["MovieID"] = new SelectList(_context.Movie, "MovieID", "MovieName"); //agregamos viewdata de Movie
-            return View();
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName"); //agregamos viewdata de Movie
+            return View();                //agregamos el viewData Movie en el post y get create y el .Where(x => x.EstaAlquilada == false)
         }
 
         // POST: Rentals/Create
@@ -67,6 +67,7 @@ namespace AppMovie.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", rental.PartnerID);
+            ViewData["MovieID"] = new SelectList(_context.Movie, "MovieID", "MovieName");
             return View(rental);
         }
 
