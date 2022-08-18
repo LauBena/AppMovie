@@ -205,6 +205,15 @@ hr{
   transition: 0.2s;
 }
 
+.btn-create2{
+  color:#b31c0e;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
 .btn-edit{
   color: #15f4ee;
   text-transform: uppercase;

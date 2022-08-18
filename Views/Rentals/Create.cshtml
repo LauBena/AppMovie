@@ -27,7 +27,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-primary" onclick="AddMovieTemp();">Agregar</button>
       </div>
     </div>
   </div>
@@ -50,9 +50,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn-create" />
-            </div>
-            <div class="form-group">
-              <a asp-action="Index">Volver a la Lista</a>
+                <a onclick="CancelRental();" class="btn-create2">Cancelar Alquiler</a>
             </div>
         </form>
     </div>
@@ -79,6 +77,38 @@
     </tbody>
 </table>
 
+
+<script>
+  function AddMovieTemp() {
+    //console.log("Guarda la pelicula");
+    var movieID = $('#MovieID').val(); //con json busca el elemento que se llame MovieID
+
+    $.ajax({
+        type: "POST", //cuando queremos guardar informacion
+        url: '../../Rentals/AddMovieTemp',
+        data: {MovieID: movieID}, //puede estar vacio o no
+        success: function(resultado) {
+          if(resultado == true){
+            $('#staticBackdrop').modal('hide');
+
+
+            @* $('#vebtanaFlotante').modal('hide');
+            BuscarPeliculas();
+            location.href="../../RentalsCreate"; *@
+
+
+            console.log("guardo bien la movie en el temp.");
+          } else {
+            alert("No se pudo agregar");
+            console.log();
+          }
+        },
+        error: function(result){
+          console.log("Error debido a: " + result);
+        }
+    });
+  }
+</script>
 
 </body>
 </html>

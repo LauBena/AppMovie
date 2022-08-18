@@ -146,12 +146,75 @@ namespace AppMovie.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var rental = await _context.Rental.FindAsync(id);
-            if(rental != null){
                 _context.Rental.Remove(rental);
             await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public JsonResult AddMovieTemp(int MovieID) //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        {
+            var resultado = true;
+            using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try //con el try-catch evitamos que la pagina colapse
+                { //se aconseja usarlo para guardado de datos
+                    var movie = (from a in _context.Movie where a.MovieID  == MovieID select a).SingleOrDefault(); //creamos una variable que guarda el valor de la consulta
+                    movie.EstaAlquilada = true;
+                    _context.SaveChanges();
+
+                    var movieTemp = new RentalDetailTemp
+                    {
+                        MovieID = movie.MovieID,
+                        MovieName = movie.MovieName
+                    };
+                    _context.RentalDetailTemp.Add(movieTemp);
+                    _context.SaveChanges();
+
+                    transaccion.Commit(); //Se guardan los cambios en la base de datos
+                }
+                catch (System.Exception)
+                {
+
+                    transaccion.Rollback(); //si hubo error revierte los datos y no guarda nada
+                    resultado = false;
+                }
             }
 
-            return RedirectToAction(nameof(Index));
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
+
+            return Json(resultado);
+        }
+
+        public JsonResult CancelRental() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        {
+            var resultado = true;
+            using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try //con el try-catch evitamos que la pagina colapse
+                { //se aconseja usarlo para guardado de datos
+                    var rentalTemp = (from a in _context.RentalDetailTemp select a).ToList(); //creamos una variable que guarda el valor de la consulta
+
+                foreach(var item in rentalTemp)
+                {
+                    var movie = (from a in _context.Movie where a.MovieID == item.MovieID select a).SingleOrDefault();
+                    movie.EstaAlquilada = false;
+                    _context.SaveChanges();
+                }
+
+                _context.RentalDetailTemp.RemoveRange();
+                _context.SaveChanges();
+
+                    transaccion.Commit(); //Se guardan los cambios en la base de datos
+                }
+                catch (System.Exception)
+                {
+
+                    transaccion.Rollback(); //si hubo error revierte los datos y no guarda nada
+                    resultado = false;
+                }
+            }
+
+            return Json(resultado);
         }
 
         private bool RentalExists(int id)
