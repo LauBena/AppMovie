@@ -201,7 +201,7 @@ namespace AppMovie.Controllers
                     _context.SaveChanges();
                 }
 
-                _context.RentalDetailTemp.RemoveRange();
+                _context.RentalDetailTemp.RemoveRange(rentalTemp);
                 _context.SaveChanges();
 
                     transaccion.Commit(); //Se guardan los cambios en la base de datos
@@ -215,6 +215,25 @@ namespace AppMovie.Controllers
             }
 
             return Json(resultado);
+        }
+
+        public JsonResult SearchMovieTemp() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        {
+
+            List<RentalDetailTemp> ListadoMovieTemp = new List<RentalDetailTemp> ();
+
+            var rentalDetailTemp = (from a in _context.RentalDetailTemp select a).ToList();
+            foreach (var item in rentalDetailTemp){
+
+                {
+                    // MovieID = item.MovieID,
+                    // MovieName = item.MovieName
+                    ListadoMovieTemp.Add(item);
+                };
+                // ListadoMovieTemp.Add(mostrarMovie);
+            }
+
+            return Json(ListadoMovieTemp);
         }
 
         private bool RentalExists(int id)
