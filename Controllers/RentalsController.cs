@@ -62,9 +62,40 @@ namespace AppMovie.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rental);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _context.Add(rental);
+                    await _context.SaveChangesAsync();
+
+
+                    var moviesTemp = (from a in _context.RentalDetailTemp select a).ToList();
+                    foreach (var item in moviesTemp)
+                    {
+                        var details = new RentalDetail
+                        {
+                            RentalID = rental.RentalID,
+                            MovieID = item.MovieID,
+                            MovieName = item.MovieName
+                        };
+                        _context.RentalDetail.Add(details);
+                        _context.SaveChanges();
+                    }
+
+                    _context.RentalDetailTemp.RemoveRange(moviesTemp);
+                    _context.SaveChanges();
+
+                    transaccion.Commit();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (System.Exception ex)
+                {
+                    transaccion.Rollback();
+                    var error = ex;
+                }
+            }
+
             }
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", rental.PartnerID);
             ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
@@ -236,6 +267,7 @@ namespace AppMovie.Controllers
             return Json(ListadoMovieTemp);
         }
 
+//Agregamos el QuitarMovie
         public JsonResult QuitarMovie(int MovieID)
         {
             var resultado = true;
