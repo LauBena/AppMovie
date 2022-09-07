@@ -16,7 +16,6 @@ function SearchMovie(rentalID) {
                     "</tr>"
                 );
             });
-
         },
         error(result){
             console.log(result);
