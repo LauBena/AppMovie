@@ -1,7 +1,7 @@
 @model AppMovie.Models.Rental
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
 <!DOCTYPE html>
@@ -30,10 +30,24 @@
             @Html.DisplayFor(model => model.Partner.PartnerName)
         </dd>
     </dl>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Titulo de la pelicula</th>
+        </tr>
+    </thead>
+    <tbody id="tableMovies">
+    </tbody>
+</table>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.RentalID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    window.onload = SearchMovie(@Model?.RentalID);
+</script>
 </body>
 </html>

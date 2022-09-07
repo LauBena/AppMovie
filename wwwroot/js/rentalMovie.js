@@ -70,3 +70,4 @@ function QuitarMovie(id){
         }
     })
 }
+

@@ -37,8 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Partner.PartnerName)
             </td>
             <td>
-                @* <a asp-action="Edit" asp-route-id="@item.RentalID" class="btn-edit">Editar</a> | *@
-                <a onclick="eliminarRental(@item.RentalID)" class="btn-delete">Eliminar</a>
+                <a asp-action="Details" asp-route-id="@item.RentalID">Detalle</a>
             </td>
         </tr>
 }

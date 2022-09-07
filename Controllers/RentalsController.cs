@@ -26,24 +26,24 @@ namespace AppMovie.Controllers
             return View(await appMovieContext.ToListAsync());
         }
 
-        // // GET: Rentals/Details/5
-        // public async Task<IActionResult> Details(int? id)
-        // {
-        //     if (id == null)
-        //     {
-        //         return NotFound();
-        //     }
+        // GET: Rentals/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //     var rental = await _context.Rental
-        //         .Include(r => r.Partner)
-        //         .FirstOrDefaultAsync(m => m.RentalID == id);
-        //     if (rental == null)
-        //     {
-        //         return NotFound();
-        //     }
+            var rental = await _context.Rental
+                .Include(r => r.Partner)
+                .FirstOrDefaultAsync(m => m.RentalID == id);
+            if (rental == null)
+            {
+                return NotFound();
+            }
 
-        //     return View(rental);
-        // }
+            return View(rental);
+        }
 
         // GET: Rentals/Create
         public IActionResult Create()
@@ -265,6 +265,20 @@ namespace AppMovie.Controllers
             }
 
             return Json(ListadoMovieTemp);
+        }
+
+        public JsonResult SearchMovie(int RentalID)
+        {
+
+            List<RentalDetail> ListadoMovie = new List<RentalDetail>();
+
+            var rentalDetail = (from a in _context.RentalDetail where a.RentalID == RentalID select a).ToList();
+            foreach (var item in rentalDetail)
+
+            {
+                ListadoMovie.Add(item);
+            }
+            return Json(ListadoMovie);
         }
 
 //Agregamos el QuitarMovie
