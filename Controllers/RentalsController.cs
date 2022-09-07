@@ -49,8 +49,8 @@ namespace AppMovie.Controllers
         public IActionResult Create()
         {
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName");
-            ViewData["MovieID"] = new SelectList(_context.Movie, "MovieID", "MovieName"); //agregamos viewdata de Movie
-            return View();
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName"); //agregamos viewdata de Movie
+            return View();                //agregamos el viewData Movie en el post y get create y el .Where(x => x.EstaAlquilada == false)
         }
 
         // POST: Rentals/Create
@@ -62,11 +62,43 @@ namespace AppMovie.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rental);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    _context.Add(rental);
+                    await _context.SaveChangesAsync();
+
+
+                    var moviesTemp = (from a in _context.RentalDetailTemp select a).ToList();
+                    foreach (var item in moviesTemp)
+                    {
+                        var details = new RentalDetail
+                        {
+                            RentalID = rental.RentalID,
+                            MovieID = item.MovieID,
+                            MovieName = item.MovieName
+                        };
+                        _context.RentalDetail.Add(details);
+                        _context.SaveChanges();
+                    }
+
+                    _context.RentalDetailTemp.RemoveRange(moviesTemp);
+                    _context.SaveChanges();
+
+                    transaccion.Commit();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (System.Exception ex)
+                {
+                    transaccion.Rollback();
+                    var error = ex;
+                }
+            }
+
             }
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", rental.PartnerID);
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
             return View(rental);
         }
 
@@ -145,12 +177,124 @@ namespace AppMovie.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var rental = await _context.Rental.FindAsync(id);
-            if(rental != null){
                 _context.Rental.Remove(rental);
             await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public JsonResult AddMovieTemp(int MovieID) //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        {
+            var resultado = true;
+            using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try //con el try-catch evitamos que la pagina colapse
+                { //se aconseja usarlo para guardado de datos
+                    var movie = (from a in _context.Movie where a.MovieID  == MovieID select a).SingleOrDefault(); //creamos una variable que guarda el valor de la consulta
+                    movie.EstaAlquilada = true;
+                    _context.SaveChanges();
+
+                    var movieTemp = new RentalDetailTemp
+                    {
+                        MovieID = movie.MovieID,
+                        MovieName = movie.MovieName
+                    };
+                    _context.RentalDetailTemp.Add(movieTemp);
+                    _context.SaveChanges();
+
+                    transaccion.Commit(); //Se guardan los cambios en la base de datos
+                }
+                catch (System.Exception)
+                {
+
+                    transaccion.Rollback(); //si hubo error revierte los datos y no guarda nada
+                    resultado = false;
+                }
             }
 
-            return RedirectToAction(nameof(Index));
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
+
+            return Json(resultado);
+        }
+
+        public JsonResult CancelRental() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        {
+            var resultado = true;
+            using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try //con el try-catch evitamos que la pagina colapse
+                { //se aconseja usarlo para guardado de datos
+                    var rentalTemp = (from a in _context.RentalDetailTemp select a).ToList(); //creamos una variable que guarda el valor de la consulta
+
+                foreach(var item in rentalTemp)
+                {
+                    var movie = (from a in _context.Movie where a.MovieID == item.MovieID select a).SingleOrDefault();
+                    movie.EstaAlquilada = false;
+                    _context.SaveChanges();
+                }
+
+                _context.RentalDetailTemp.RemoveRange(rentalTemp);
+                _context.SaveChanges();
+
+                    transaccion.Commit(); //Se guardan los cambios en la base de datos
+                }
+                catch (System.Exception)
+                {
+
+                    transaccion.Rollback(); //si hubo error revierte los datos y no guarda nada
+                    resultado = false;
+                }
+            }
+
+            return Json(resultado);
+        }
+
+        public JsonResult SearchMovieTemp() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        {
+
+            List<RentalDetailTemp> ListadoMovieTemp = new List<RentalDetailTemp> ();
+
+            var rentalDetailTemp = (from a in _context.RentalDetailTemp select a).ToList();
+            foreach (var item in rentalDetailTemp){
+
+                {
+                    // MovieID = item.MovieID,
+                    // MovieName = item.MovieName
+                    ListadoMovieTemp.Add(item);
+                };
+                // ListadoMovieTemp.Add(mostrarMovie);
+            }
+
+            return Json(ListadoMovieTemp);
+        }
+
+//Agregamos el QuitarMovie
+        public JsonResult QuitarMovie(int MovieID)
+        {
+            var resultado = true;
+
+            using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var movie = (from a in _context.Movie where a.MovieID == MovieID select a).SingleOrDefault();
+                    movie.EstaAlquilada = false;
+                    _context.SaveChanges();
+
+
+                    var rentalTemp = (from a in _context.RentalDetailTemp where a.MovieID == MovieID select a).SingleOrDefault();
+                    _context.RentalDetailTemp.Remove(rentalTemp);
+                    _context.SaveChanges();
+
+                    transaccion.Commit();
+                }
+                catch (System.Exception)
+                {
+                    transaccion.Rollback();
+                    resultado = false;
+                }
+            }
+
+        return Json(resultado);
         }
 
         private bool RentalExists(int id)
@@ -159,3 +303,4 @@ namespace AppMovie.Controllers
         }
     }
 }
+
