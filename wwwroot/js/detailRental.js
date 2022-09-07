@@ -13,6 +13,7 @@ function SearchMovie(rentalID) {
                 $("#tableMovies").append(
                     "<tr>" +
                         "<th>" + item.movieName + "</th>" +
+                        "<th>" + item.movieDescription + "</th>" +
                     "</tr>"
                 );
             });
