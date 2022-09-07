@@ -177,6 +177,11 @@ hr{
   border-radius: 15px;
 }
 
+.col-sm-2 , .col-sm-10{
+  color: white;
+  text-decoration: none;
+}
+
 .btn-create{
   color:#0eb350;
   text-transform: uppercase;
