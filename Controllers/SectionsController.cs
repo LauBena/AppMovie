@@ -141,8 +141,16 @@ namespace AppMovie.Controllers
         {
             var section = await _context.Section.FindAsync(id);
             if(section != null){
-                _context.Section.Remove(section);
-                await _context.SaveChangesAsync();
+                var sectionInMovie = (from a in _context.Movie where a.SectionID == id select a).ToList();
+                if(sectionInMovie.Count == 0)
+                {
+                    _context.Section.Remove(section);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+
+                }
             }
         return RedirectToAction(nameof(Index));
         }

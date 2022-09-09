@@ -141,8 +141,16 @@ namespace AppMovie.Controllers
         {
             var gender = await _context.Gender.FindAsync(id);
             if(gender != null){
-            _context.Gender.Remove(gender);
-            await _context.SaveChangesAsync();
+                var genderInMovie = (from a in _context.Movie where a.GenderID == id select a).ToList();
+                if(genderInMovie.Count == 0)
+                {
+                    _context.Gender.Remove(gender);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+
+                }
             }
 
             return RedirectToAction(nameof(Index));
