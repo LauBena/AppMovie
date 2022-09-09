@@ -20,7 +20,7 @@ namespace AppMovie.Models
         [DataType(DataType.Date)]
         public DateTime MovieData { get; set; }
 
-
+        public bool IsDeleted { get; set; }
 
         [Display(Name = "Sección")]
         public int SectionID { get; set; }
