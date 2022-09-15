@@ -40,10 +40,29 @@
 </table>
 <script>
 function eliminarSeccion(id){
-    var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
-    if(eliminar){
-        location.href = "../../Sections/DeleteConfirmed/" + id;
-    }
+    var eliminar = Swal.fire({
+            title: 'Estas seguro?',
+            text: "No podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borralo!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+            'Eliminado!',
+            'La seccion ha sido eliminada.',
+            'success'
+            )
+            function redirigir(){
+            location.href = "../../Sections/DeleteConfirmed/" + id;
+            }
+
+            setTimeout(redirigir, 1000);
+
+            }
+    })
 }
 </script>
 </body>
