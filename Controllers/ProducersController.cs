@@ -141,8 +141,16 @@ namespace AppMovie.Controllers
         {
             var producer = await _context.Producer.FindAsync(id);
             if(producer != null){
-            _context.Producer.Remove(producer);
-            await _context.SaveChangesAsync();
+                var producerInMovie = (from a in _context.Movie where a.ProducerID == id select a).ToList();
+                if(producerInMovie.Count == 0)
+                {
+                    _context.Producer.Remove(producer);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+
+                }
             }
 
             return RedirectToAction(nameof(Index));
