@@ -70,10 +70,29 @@
 </table>
 <script>
 function eliminarMovie(id){
-    var eliminar = confirm("Esta seguro que desea eliminar a esta pelicula?");
-    if(eliminar){
-        location.href = "../../Movies/DeleteConfirmed/" + id;
-    }
+    var eliminar = Swal.fire({
+            title: 'Estas seguro?',
+            text: "No podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borralo!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+            'Eliminado!',
+            'La pelicula ha sido eliminada.',
+            'success'
+            )
+            function redirigir(){
+            location.href = "../../Movies/DeleteConfirmed/" + id;
+            }
+
+            setTimeout(redirigir, 2000);
+
+            }
+    })
 }
 </script>
 </body>

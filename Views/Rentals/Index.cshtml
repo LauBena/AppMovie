@@ -46,10 +46,29 @@
 
 <script>
     function eliminarRental(id){
-    var eliminar = confirm("Esta seguro que desea eliminar este Alquiler?");
-    if(eliminar){
-        location.href = "../../Rentals/DeleteConfirmed/" + id;
-    }
+    var eliminar = Swal.fire({
+            title: 'Estas seguro?',
+            text: "No podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borralo!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+            'Eliminado!',
+            'El alquiler ha sido eliminado.',
+            'success'
+            )
+            function redirigir(){
+            location.href = "../../Rentals/DeleteConfirmed/" + id;
+            }
+
+            setTimeout(redirigir, 2000);
+
+            }
+    })
 }
 </script>
 </body>

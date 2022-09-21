@@ -65,10 +65,29 @@
 
 <script>
     function eliminarPartner(id){
-    var eliminar = confirm("Esta seguro que desea eliminar a este socio?");
-    if(eliminar){
-        location.href = "../../Partners/DeleteConfirmed/" + id;
-    }
+    var eliminar = Swal.fire({
+            title: 'Estas seguro?',
+            text: "No podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borralo!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+            'Eliminado!',
+            'El socio ha sido eliminado.',
+            'success'
+            )
+            function redirigir(){
+            location.href = "../../Partners/DeleteConfirmed/" + id;
+            }
+
+            setTimeout(redirigir, 2000);
+
+            }
+    })
 }
 </script>
 </body>

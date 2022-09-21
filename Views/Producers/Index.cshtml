@@ -41,10 +41,29 @@
 
 <script>
 function eliminarProductora(id){
-    var eliminar = confirm("Esta seguro que desea eliminar esta seccion?");
-    if(eliminar){
-        location.href = "../../Producers/DeleteConfirmed/" + id;
-    }
+    var eliminar = Swal.fire({
+            title: 'Estas seguro?',
+            text: "No podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borralo!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+            Swal.fire(
+            'Eliminado!',
+            'La productora ha sido eliminada.',
+            'success'
+            )
+            function redirigir(){
+            location.href = "../../Producers/DeleteConfirmed/" + id;
+            }
+
+            setTimeout(redirigir, 2000);
+
+            }
+    })
 }
 </script>
 </body>
