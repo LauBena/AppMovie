@@ -14,5 +14,6 @@ namespace AppMovie.Models
 
         [Display(Name = "Pelicula")]
         public int MovieID { get; set; }
+        public virtual Movie? Movie { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace AppMovie.Models
         public virtual Movie? Movie { get; set; }
 
 
-        [Display(Name = "Nombre de la Película")]
+        [Display(Name = "Nombre de la Pelicula")]
         public string? MovieName { get; set; }
     }
 }
