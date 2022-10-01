@@ -13,6 +13,6 @@ namespace AppMovie.Models
         public DateTime ReturnMovieDate { get; set; }
 
         [Display(Name = "Nombre de la pelicula")]
-        public int MovieName { get; set; }
+        public string? MovieName { get; set; }
     }
 }

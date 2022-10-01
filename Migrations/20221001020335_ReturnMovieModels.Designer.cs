@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMovie.Migrations
 {
     [DbContext(typeof(AppMovieContext))]
-    partial class AppMovieContextModelSnapshot : ModelSnapshot
+    [Migration("20221001020335_ReturnMovieModels")]
+    partial class ReturnMovieModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -251,8 +253,8 @@ namespace AppMovie.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReturnMovieID"), 1L, 1);
 
-                    b.Property<string>("MovieName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MovieName")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReturnMovieDate")
                         .HasColumnType("datetime2");
