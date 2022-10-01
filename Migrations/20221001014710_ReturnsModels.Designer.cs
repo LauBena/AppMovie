@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMovie.Migrations
 {
     [DbContext(typeof(AppMovieContext))]
-    [Migration("20220930222304_ReturnModels")]
-    partial class ReturnModels
+    [Migration("20221001014710_ReturnsModels")]
+    partial class ReturnsModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -245,23 +245,23 @@ namespace AppMovie.Migrations
                     b.ToTable("RentalDetailTemp");
                 });
 
-            modelBuilder.Entity("AppMovie.Models.Return", b =>
+            modelBuilder.Entity("AppMovie.Models.ReturnMovie", b =>
                 {
-                    b.Property<int>("ReturnID")
+                    b.Property<int>("ReturnMovieID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReturnID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReturnMovieID"), 1L, 1);
 
                     b.Property<int>("MovieName")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReturnDate")
+                    b.Property<DateTime>("ReturnMovieDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ReturnID");
+                    b.HasKey("ReturnMovieID");
 
-                    b.ToTable("Return");
+                    b.ToTable("ReturnMovie");
                 });
 
             modelBuilder.Entity("AppMovie.Models.Section", b =>
