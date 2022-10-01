@@ -31,6 +31,4 @@ using AppMovie.Models;
         public DbSet<AppMovie.Models.RentalDetail> RentalDetail { get; set; }
 
         public DbSet<AppMovie.Models.RentalDetailTemp> RentalDetailTemp { get; set; }
-
-        public DbSet<AppMovie.Models.ReturnMovie> ReturnMovie { get; set; }
     }
