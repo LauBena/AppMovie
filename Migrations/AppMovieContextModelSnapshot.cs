@@ -251,13 +251,8 @@ namespace AppMovie.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReturnMovieID"), 1L, 1);
 
-<<<<<<< HEAD
-                    b.Property<int>("MovieName")
-                        .HasColumnType("int");
-=======
                     b.Property<string>("MovieName")
                         .HasColumnType("nvarchar(max)");
->>>>>>> 1194869ab47f27d537d52bda57299c326f0a6ed0
 
                     b.Property<DateTime>("ReturnMovieDate")
                         .HasColumnType("datetime2");
