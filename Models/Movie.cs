@@ -40,8 +40,5 @@ namespace AppMovie.Models
         public bool EstaAlquilada { get; set; }
 
         public virtual ICollection<RentalDetail>? RentalDetails { get; set; }
-        public virtual ICollection<Return>? Returns { get; set; }
-
-        public virtual ICollection<ReturnDetail>? ReturnDetails { get; set; }
     }
 }
