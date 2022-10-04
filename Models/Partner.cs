@@ -43,7 +43,5 @@ namespace AppMovie.Models {
         public virtual Location? Locations { get; set; }
 
         public virtual ICollection<Rental>? Rentals { get; set; }
-
-        public virtual ICollection<Return>? Returns { get; set; }
     }
 }

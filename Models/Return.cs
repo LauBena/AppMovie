@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AppMovie.Models
 {
-    public class Return 
+    public class Return
     {
         [Key]
         public int ReturnID { get; set; }
