@@ -140,7 +140,7 @@ namespace AppMovie.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var section = await _context.Section.FindAsync(id);
-            if(section != null){
+            if(section != null){ //validacion
                 var sectionInMovie = (from a in _context.Movie where a.SectionID == id select a).ToList();
                 if(sectionInMovie.Count == 0)
                 {
