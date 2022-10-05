@@ -174,6 +174,7 @@ namespace AppMovie.Controllers
             return View(rental);
         }
 
+        // POST: Rentals/Delete/5
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var rental = await _context.Rental.FindAsync(id);

@@ -30,10 +30,24 @@
             @Html.DisplayFor(model => model.Partner.PartnerName)
         </dd>
     </dl>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Titulo de la pelicula</th>
+            <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody id="tableMovies">
+    </tbody>
+</table>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ReturnID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
+
+<script src="~/js/detailReturn.js" asp-append-version="true"></script>
+<script>
+    window.onload = SearchMovie(@Model?.ReturnID);
+</script>
 </body>
 </html>
