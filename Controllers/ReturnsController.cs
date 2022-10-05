@@ -65,6 +65,7 @@ namespace AppMovie.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
             return View(@return);
         }
 
@@ -118,6 +119,7 @@ namespace AppMovie.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
             return View(@return);
         }
 
