@@ -60,7 +60,7 @@ function QuitarMovie(id){
         url: "../../Returns/QuitarMovie",
         data: {MovieID: id},
         success: function(resultado) {
-            if(resultado == true){
+            if(resultado == false){
                 location.href="../../Returns/Create";
             }
         },

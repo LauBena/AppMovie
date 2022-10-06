@@ -13,13 +13,13 @@
 </head>
 <body>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="create-link" asp-action="Create">Crear devolucion</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ReturnDate)
+                @Html.DisplayNameFor(model => model.ReturnDate);
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Partner)
@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Partner.PartnerName)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.ReturnID">Details</a>
+                <a asp-action="Details" asp-route-id="@item.ReturnID">Detalle</a>
             </td>
         </tr>
 }

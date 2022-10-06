@@ -69,20 +69,20 @@ namespace AppMovie.Controllers
                     await _context.SaveChangesAsync();
 
 
-                    var moviesTemp = (from a in _context.RentalDetailTemp select a).ToList();
+                    var moviesTemp = (from a in _context.ReturnDetailTemp select a).ToList();
                     foreach (var item in moviesTemp)
                     {
-                        var details = new RentalDetail
+                        var details = new ReturnDetail
                         {
-                            RentalID = @return.ReturnID,
+                            ReturnID = @return.ReturnID,
                             MovieID = item.MovieID,
                             MovieName = item.MovieName
                         };
-                        _context.RentalDetail.Add(details);
+                        _context.ReturnDetail.Add(details);
                         _context.SaveChanges();
                     }
 
-                    _context.RentalDetailTemp.RemoveRange(moviesTemp);
+                    _context.ReturnDetailTemp.RemoveRange(moviesTemp);
                     _context.SaveChanges();
 
                     transaccion.Commit();
@@ -97,62 +97,10 @@ namespace AppMovie.Controllers
 
             }
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
-            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == true), "MovieID", "MovieName");
             return View(@return);
         }
 
-        // GET: Returns/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var @return = await _context.Return.FindAsync(id);
-            if (@return == null)
-            {
-                return NotFound();
-            }
-            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
-            return View(@return);
-        }
-
-        // POST: Returns/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReturnID,ReturnDate,PartnerID")] Return @return)
-        {
-            if (id != @return.ReturnID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(@return);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ReturnExists(@return.ReturnID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
-            return View(@return);
-        }
 
         // GET: Returns/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -192,7 +140,7 @@ namespace AppMovie.Controllers
                 try //con el try-catch evitamos que la pagina colapse
                 { //se aconseja usarlo para guardado de datos
                     var movie = (from a in _context.Movie where a.MovieID  == MovieID select a).SingleOrDefault(); //creamos una variable que guarda el valor de la consulta
-                    movie.EstaAlquilada = true;
+                    movie.EstaAlquilada = false;
                     _context.SaveChanges();
 
                     var movieTemp = new ReturnDetailTemp
@@ -213,14 +161,109 @@ namespace AppMovie.Controllers
                 }
             }
 
-            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
+            ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == true), "MovieID", "MovieName");
 
             return Json(resultado);
         }
 
+        public JsonResult CancelRental() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        {
+            var resultado = true;
+            using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try //con el try-catch evitamos que la pagina colapse
+                { //se aconseja usarlo para guardado de datos
+                    var returnTemp = (from a in _context.ReturnDetailTemp select a).ToList(); //creamos una variable que guarda el valor de la consulta
+
+                foreach(var item in returnTemp)
+                {
+                    var movie = (from a in _context.Movie where a.MovieID == item.MovieID select a).SingleOrDefault();
+                    movie.EstaAlquilada = false;
+                    _context.SaveChanges();
+                }
+
+                _context.ReturnDetailTemp.RemoveRange(returnTemp);
+                _context.SaveChanges();
+
+                    transaccion.Commit(); //Se guardan los cambios en la base de datos
+                }
+                catch (System.Exception)
+                {
+
+                    transaccion.Rollback(); //si hubo error revierte los datos y no guarda nada
+                    resultado = false;
+                }
+            }
+
+            return Json(resultado);
+        }
+
+        public JsonResult SearchMovieTemp() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        {
+
+            List<ReturnDetailTemp> ListadoMovieTemp = new List<ReturnDetailTemp> ();
+
+            var returnDetailTemp = (from a in _context.ReturnDetailTemp select a).ToList();
+            foreach (var item in returnDetailTemp){
+
+                {
+                    // MovieID = item.MovieID,
+                    // MovieName = item.MovieName
+                    ListadoMovieTemp.Add(item);
+                };
+                // ListadoMovieTemp.Add(mostrarMovie);
+            }
+
+            return Json(ListadoMovieTemp);
+        }
+
+        public JsonResult SearchMovie(int ReturnID)
+        {
+
+            List<ReturnDetail> ListadoMovie = new List<ReturnDetail>();
+
+            var returnDetail = (from a in _context.ReturnDetail where a.ReturnID == ReturnID select a).ToList();
+            foreach (var item in returnDetail)
+
+            {
+                ListadoMovie.Add(item);
+            }
+            return Json(ListadoMovie);
+        }
+
+//Agregamos el QuitarMovie
+        public JsonResult QuitarMovie(int MovieID)
+        {
+            var resultado = true;
+
+            using (var transaccion = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var movie = (from a in _context.Movie where a.MovieID == MovieID select a).SingleOrDefault();
+                    movie.EstaAlquilada = true;
+                    _context.SaveChanges();
+
+
+                    var returnTemp = (from a in _context.ReturnDetailTemp where a.MovieID == MovieID select a).SingleOrDefault();
+                    _context.ReturnDetailTemp.Remove(returnTemp);
+                    _context.SaveChanges();
+
+                    transaccion.Commit();
+                }
+                catch (System.Exception)
+                {
+                    transaccion.Rollback();
+                    resultado = false;
+                }
+            }
+
+        return Json(resultado);
+        }
+
         private bool ReturnExists(int id)
         {
-          return (_context.Return?.Any(e => e.ReturnID == id)).GetValueOrDefault();
+        return (_context.Return?.Any(e => e.ReturnID == id)).GetValueOrDefault();
         }
     }
 }
