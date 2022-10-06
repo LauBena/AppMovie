@@ -1,3 +1,4 @@
+#nullable disable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace AppMovie.Controllers
         // GET: Returns
         public async Task<IActionResult> Index()
         {
-            var appMovieContext = _context.Return.Include(r => r.Partner);
+            var appMovieContext = _context.Return.Include(re => re.Partner);
             return View(await appMovieContext.ToListAsync());
         }
 
@@ -34,7 +35,7 @@ namespace AppMovie.Controllers
             }
 
             var @return = await _context.Return
-                .Include(r => r.Partner)
+                .Include(re => re.Partner)
                 .FirstOrDefaultAsync(m => m.ReturnID == id);
             if (@return == null)
             {
@@ -157,7 +158,7 @@ namespace AppMovie.Controllers
                 {
 
                     transaccion.Rollback(); //si hubo error revierte los datos y no guarda nada
-                    resultado = false;
+                    resultado = true;
                 }
             }
 
@@ -168,7 +169,7 @@ namespace AppMovie.Controllers
 
         public JsonResult CancelRental() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
         {
-            var resultado = true;
+            var resultado = false;
             using (var transaccion = _context.Database.BeginTransaction())
             {
                 try //con el try-catch evitamos que la pagina colapse
@@ -178,7 +179,7 @@ namespace AppMovie.Controllers
                 foreach(var item in returnTemp)
                 {
                     var movie = (from a in _context.Movie where a.MovieID == item.MovieID select a).SingleOrDefault();
-                    movie.EstaAlquilada = false;
+                    movie.EstaAlquilada = true;
                     _context.SaveChanges();
                 }
 
@@ -191,7 +192,7 @@ namespace AppMovie.Controllers
                 {
 
                     transaccion.Rollback(); //si hubo error revierte los datos y no guarda nada
-                    resultado = false;
+                    resultado = true;
                 }
             }
 
@@ -234,7 +235,7 @@ namespace AppMovie.Controllers
 //Agregamos el QuitarMovie
         public JsonResult QuitarMovie(int MovieID)
         {
-            var resultado = true;
+            var resultado = false;
 
             using (var transaccion = _context.Database.BeginTransaction())
             {
@@ -254,7 +255,7 @@ namespace AppMovie.Controllers
                 catch (System.Exception)
                 {
                     transaccion.Rollback();
-                    resultado = false;
+                    resultado = true;
                 }
             }
 
@@ -263,7 +264,7 @@ namespace AppMovie.Controllers
 
         private bool ReturnExists(int id)
         {
-        return (_context.Return?.Any(e => e.ReturnID == id)).GetValueOrDefault();
+        return _context.Return.Any(e => e.ReturnID == id);
         }
     }
 }
