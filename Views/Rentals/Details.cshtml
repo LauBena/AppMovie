@@ -1,53 +1,61 @@
 @model AppMovie.Models.Rental
 
 @{
+
+
+
     Layout = "_Layout";
 }
 
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Detalle</title>
 </head>
+
 <body>
 
-<div>
-    <h4>Alquiler</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RentalDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RentalDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Partner)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Partner.PartnerName)
-        </dd>
-    </dl>
+    <div>
+        <h4>Alquiler</h4>
+        <div class="container-box">
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RentalDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RentalDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Partner)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Partner.PartnerName)
+                </dd>
+            </dl>
 
-    <table class="table">
-    <thead>
-        <tr>
-            <th>Titulo de la pelicula</th>
-        </tr>
-    </thead>
-    <tbody id="tableMovies">
-    </tbody>
-</table>
-</div>
-<div>
-    <a asp-action="Index">Volver a la lista</a>
-</div>
+            <table class="table">
+            <thead>
+            <tr>
+                <th>Titulo de la pelicula</th>
+            </tr>
+            </thead>
+            <tbody id="tableMovies">
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Volver a la lista</a>
+    </div>
 
-<script src="~/js/detailRental.js" asp-append-version="true"></script>
-<script>
-    window.onload = SearchMovie(@Model?.RentalID);
-</script>
+    <script src="~/js/detailRental.js" asp-append-version="true"></script>
+    <script>
+        window.onload = SearchMovie(@Model?.RentalID);
+    </script>
 </body>
+
 </html>
