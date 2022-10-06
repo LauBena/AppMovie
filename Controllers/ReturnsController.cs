@@ -22,7 +22,7 @@ namespace AppMovie.Controllers
         // GET: Returns
         public async Task<IActionResult> Index()
         {
-            var appMovieContext = _context.Return.Include(re => re.Partner);
+            var appMovieContext = _context.Return.Include(r => r.Partner);
             return View(await appMovieContext.ToListAsync());
         }
 
@@ -35,7 +35,7 @@ namespace AppMovie.Controllers
             }
 
             var @return = await _context.Return
-                .Include(re => re.Partner)
+                .Include(r => r.Partner)
                 .FirstOrDefaultAsync(m => m.ReturnID == id);
             if (@return == null)
             {
@@ -58,7 +58,7 @@ namespace AppMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RentalID,RentalDate,PartnerID")] Return @return)
+        public async Task<IActionResult> Create([Bind("RentalID,RentalDate,PartnerID")] Return Return)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace AppMovie.Controllers
             {
                 try
                 {
-                    _context.Add(@return);
+                    _context.Add(Return);
                     await _context.SaveChangesAsync();
 
 
@@ -75,7 +75,7 @@ namespace AppMovie.Controllers
                     {
                         var details = new ReturnDetail
                         {
-                            ReturnID = @return.ReturnID,
+                            ReturnID = Return.ReturnID,
                             MovieID = item.MovieID,
                             MovieName = item.MovieName
                         };
@@ -97,9 +97,10 @@ namespace AppMovie.Controllers
             }
 
             }
-            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
+            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", Return.PartnerID);
+            ViewData["MovieID"] = new SelectList(_context.Movie, "MovieID", "MovieName");
             ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == true), "MovieID", "MovieName");
-            return View(@return);
+            return View(Return);
         }
 
 
@@ -128,7 +129,10 @@ namespace AppMovie.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var @return = await _context.Return.FindAsync(id);
+            if(@return != null){
                 _context.Return.Remove(@return);
+            }
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

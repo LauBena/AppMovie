@@ -123,10 +123,20 @@ namespace AppMovie.Controllers
         }
 
         // POST: Rentals/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (_context.Rental == null)
+            {
+                return Problem("Entity set 'AppMovieContext.Rental'  is null.");
+            }
             var rental = await _context.Rental.FindAsync(id);
+            if (rental != null)
+            {
                 _context.Rental.Remove(rental);
+            }
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
