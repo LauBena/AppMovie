@@ -44,12 +44,5 @@ namespace AppMovie.Models
         public virtual Producer? Producer { get; set; }
 
         public bool EstaAlquilada { get; set; }
-<<<<<<< HEAD
-
-        public virtual ICollection<RentalDetail>? RentalDetails { get; set; }
-
-        public virtual ICollection<ReturnDetail>? ReturnDetails { get; set; }
-=======
->>>>>>> 7d8c6605bc01b08ede6c54dbcae610e4e52cb1a0
     }
 }
