@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMovie.Migrations
 {
     [DbContext(typeof(AppMovieContext))]
-    partial class AppMovieContextModelSnapshot : ModelSnapshot
+    [Migration("20221005142400_ReturnTempModels")]
+    partial class ReturnTempModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -379,7 +381,7 @@ namespace AppMovie.Migrations
             modelBuilder.Entity("AppMovie.Models.Rental", b =>
                 {
                     b.HasOne("AppMovie.Models.Partner", "Partner")
-                        .WithMany()
+                        .WithMany("Rentals")
                         .HasForeignKey("PartnerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -390,7 +392,7 @@ namespace AppMovie.Migrations
             modelBuilder.Entity("AppMovie.Models.RentalDetail", b =>
                 {
                     b.HasOne("AppMovie.Models.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("RentalDetails")
                         .HasForeignKey("MovieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -420,13 +422,13 @@ namespace AppMovie.Migrations
             modelBuilder.Entity("AppMovie.Models.ReturnDetail", b =>
                 {
                     b.HasOne("AppMovie.Models.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("ReturnDetails")
                         .HasForeignKey("MovieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AppMovie.Models.Return", "Return")
-                        .WithMany("ReturnDetails")
+                        .WithMany("ReturnDetail")
                         .HasForeignKey("ReturnID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -451,6 +453,18 @@ namespace AppMovie.Migrations
                     b.Navigation("Partners");
                 });
 
+            modelBuilder.Entity("AppMovie.Models.Movie", b =>
+                {
+                    b.Navigation("RentalDetails");
+
+                    b.Navigation("ReturnDetails");
+                });
+
+            modelBuilder.Entity("AppMovie.Models.Partner", b =>
+                {
+                    b.Navigation("Rentals");
+                });
+
             modelBuilder.Entity("AppMovie.Models.Producer", b =>
                 {
                     b.Navigation("Movies");
@@ -463,7 +477,7 @@ namespace AppMovie.Migrations
 
             modelBuilder.Entity("AppMovie.Models.Return", b =>
                 {
-                    b.Navigation("ReturnDetails");
+                    b.Navigation("ReturnDetail");
                 });
 
             modelBuilder.Entity("AppMovie.Models.Section", b =>

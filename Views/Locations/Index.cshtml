@@ -1,76 +1,88 @@
 @model IEnumerable<AppMovie.Models.Location>
 
 @{
+
     Layout = "_Layout";
 }
 
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
+
 <body>
-<p>
-    <a class="create-link" asp-action="Create">Crear Localidad</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CountryID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Countries.CountryName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LocationID" class="btn-edit">Editar</a> |
-                <a onclick="eliminarUbicacion(@item.LocationID)" class="btn-delete">Eliminar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a class="create-link" asp-action="Create">Crear Localidad</a>
+    </p>
+    <div class="container-box">
+        <div class="container-scroll">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LocationName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CountryID)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LocationName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Countries.CountryName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.LocationID" class="button">
+                                    <span>Editar</span>
+                                    </a>
+                                <a onclick="eliminarUbicacion(@item.LocationID)" class="button-Eliminar">Eliminar</a>
+                            </td>
+                        </tr>
 
-<script>
-    function eliminarUbicacion(id){
-    var eliminar = Swal.fire({
-            title: 'Estas seguro?',
-            text: "No podras revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, borralo!'
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function eliminarUbicacion(id) {
+            var eliminar = Swal.fire({
+                title: 'Estas seguro?',
+                text: "No podras revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, borralo!'
             }).then((result) => {
-            if (result.isConfirmed) {
-            Swal.fire(
-            'Eliminado!',
-            'La localidad ha sido eliminada.',
-            'success'
-            )
-            function redirigir(){
-            location.href = "../../Locations/DeleteConfirmed/" + id;
-            }
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Eliminado!',
+                        'La localidad ha sido eliminada.',
+                        'success'
+                    )
+                    function redirigir() {
+                        location.href = "../../Locations/DeleteConfirmed/" + id;
+                    }
 
-            setTimeout(redirigir, 2000);
+                    setTimeout(redirigir, 2000);
 
-            }
-    })
-}
-</script>
+                }
+            })
+        }
+    </script>
 </body>
+
 </html>

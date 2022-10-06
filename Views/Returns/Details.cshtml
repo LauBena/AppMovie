@@ -9,12 +9,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <title>Detalle</title>
 </head>
 <body>
 
-<div>
-    <h4>Return</h4>
+<div class="container-box">
+<div class="container-scroll">
+    <br>
+    <h4>Devolucion</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -30,10 +32,25 @@
             @Html.DisplayFor(model => model.Partner.PartnerName)
         </dd>
     </dl>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Titulo de la pelicula</th>
+        </tr>
+    </thead>
+    <tbody id="tableMovies">
+    </tbody>
+</table>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ReturnID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
+<br>
+</div>
+
+<script src="~/js/detailReturn.js" asp-append-version="true"></script>
+<script>
+    window.onload = SearchMovieReturn(@Model?.ReturnID);
+</script>
 </body>
 </html>

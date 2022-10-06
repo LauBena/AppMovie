@@ -102,58 +102,6 @@ namespace AppMovie.Controllers
             return View(rental);
         }
 
-        // GET: Rentals/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var rental = await _context.Rental.FindAsync(id);
-            if (rental == null)
-            {
-                return NotFound();
-            }
-            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", rental.PartnerID);
-            return View(rental);
-        }
-
-        // POST: Rentals/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RentalID,RentalDate,PartnerID")] Rental rental)
-        {
-            if (id != rental.RentalID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(rental);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RentalExists(rental.RentalID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", rental.PartnerID);
-            return View(rental);
-        }
 
         // GET: Rentals/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -174,10 +122,21 @@ namespace AppMovie.Controllers
             return View(rental);
         }
 
+        // POST: Rentals/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (_context.Rental == null)
+            {
+                return Problem("Entity set 'AppMovieContext.Rental'  is null.");
+            }
             var rental = await _context.Rental.FindAsync(id);
+            if (rental != null)
+            {
                 _context.Rental.Remove(rental);
+            }
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

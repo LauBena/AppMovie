@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AppMovie.Migrations
 {
-    public partial class MigrationReturnModels : Migration
+    public partial class MigracioneesModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,20 @@ namespace AppMovie.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RentalDetailTemp", x => x.RentalDetailTempID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ReturnDetailTemp",
+                columns: table => new
+                {
+                    ReturnDetailTempID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MovieID = table.Column<int>(type: "int", nullable: false),
+                    MovieName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReturnDetailTemp", x => x.ReturnDetailTempID);
                 });
 
             migrationBuilder.CreateTable(
@@ -316,6 +330,9 @@ namespace AppMovie.Migrations
 
             migrationBuilder.DropTable(
                 name: "ReturnDetail");
+
+            migrationBuilder.DropTable(
+                name: "ReturnDetailTemp");
 
             migrationBuilder.DropTable(
                 name: "Rental");

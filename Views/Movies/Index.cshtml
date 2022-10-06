@@ -15,6 +15,8 @@
 <p>
     <a class="create-link" asp-action="Create">Crear Película</a>
 </p>
+    <div class="container-box">
+        <div class="container-scroll">
 <table class="table">
     <thead>
         <tr>
@@ -61,13 +63,18 @@
                 @Html.DisplayFor(modelItem => item.Producer.ProducerName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MovieID" class="btn-edit">Editar</a> |
-                <a onclick="eliminarMovie(@item.MovieID)" class="btn-delete">Eliminar</a>
+                <a asp-action="Edit" asp-route-id="@item.MovieID" class="button">
+                    <span>Editar</span>
+                </a>
+                <a onclick="eliminarMovie(@item.MovieID)" class="button button-Eliminar">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+        </div>
+    </div>
+
 <script>
 function eliminarMovie(id){
     var eliminar = Swal.fire({

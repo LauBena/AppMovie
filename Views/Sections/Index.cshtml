@@ -1,69 +1,82 @@
 @model IEnumerable<AppMovie.Models.Section>
 
 @{
+
     Layout = "_Layout";
 }
 
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
+
 <body>
-<p>
-    <a class="create-link" asp-action="Create">Crear Sección</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SectionName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SectionName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SectionID" class="btn-edit">Editar</a> |
-                <a onclick="eliminarSeccion(@item.SectionID)" class="btn-delete">Eliminar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<script>
-function eliminarSeccion(id){
-    var eliminar = Swal.fire({
-            title: 'Estas seguro?',
-            text: "No podras revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, borralo!'
+    <p>
+        <a class="create-link" asp-action="Create">Crear Sección</a>
+    </p>
+    <div class="container-box">
+        <div class="container-scroll">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SectionName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SectionName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.SectionID" class="button">
+                                    <span>Editar</span>
+                                </a>
+                                <a onclick="eliminarSeccion(@item.SectionID)" class="button-Eliminar">Eliminar</a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function eliminarSeccion(id) {
+            var eliminar = Swal.fire({
+                title: 'Estas seguro?',
+                text: "No podras revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, borralo!'
             }).then((result) => {
-            if (result.isConfirmed) {
-            Swal.fire(
-            'Eliminado!',
-            'La seccion ha sido eliminada.',
-            'success'
-            )
-            function redirigir(){
-            location.href = "../../Sections/DeleteConfirmed/" + id;
-            }
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Eliminado!',
+                        'La seccion ha sido eliminada.',
+                        'success'
+                    )
+                    function redirigir() {
+                        location.href = "../../Sections/DeleteConfirmed/" + id;
+                    }
 
-            setTimeout(redirigir, 2000);
+                    setTimeout(redirigir, 2000);
 
-            }
-    })
-}
-</script>
+                }
+            })
+        }
+    </script>
 </body>
+
 </html>

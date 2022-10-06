@@ -1,94 +1,106 @@
 @model IEnumerable<AppMovie.Models.Partner>
 
 @{
+
     Layout = "_Layout";
 }
 
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
+
 <body>
-<p>
-    <a class="create-link" asp-action="Create">Crear Socio/Cliente</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PartnerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PartnerDirection)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PartnerPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PartnerBirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartnerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartnerDirection)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartnerPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartnerBirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Locations.LocationName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PartnerID" class="btn-edit">Editar</a> |
-                <a onclick="eliminarPartner(@item.PartnerID)" class="btn-delete">Eliminar</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a class="create-link" asp-action="Create">Crear Socio/Cliente</a>
+    </p>
+    <div class="container-box">
+        <div class="container-scroll">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PartnerName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PartnerDirection)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PartnerPhone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PartnerBirthDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LocationID)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PartnerName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PartnerDirection)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PartnerPhone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PartnerBirthDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Locations.LocationName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.PartnerID" class="button">
+                                    <span>Editar</span>
+                                </a>
+                                <a onclick="eliminarPartner(@item.PartnerID)" class="button-Eliminar">Eliminar</a>
+                            </td>
+                        </tr>
 
-<script>
-    function eliminarPartner(id){
-    var eliminar = Swal.fire({
-            title: 'Estas seguro?',
-            text: "No podras revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, borralo!'
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function eliminarPartner(id) {
+            var eliminar = Swal.fire({
+                title: 'Estas seguro?',
+                text: "No podras revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, borralo!'
             }).then((result) => {
-            if (result.isConfirmed) {
-            Swal.fire(
-            'Eliminado!',
-            'El socio ha sido eliminado.',
-            'success'
-            )
-            function redirigir(){
-            location.href = "../../Partners/DeleteConfirmed/" + id;
-            }
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Eliminado!',
+                        'El socio ha sido eliminado.',
+                        'success'
+                    )
+                    function redirigir() {
+                        location.href = "../../Partners/DeleteConfirmed/" + id;
+                    }
 
-            setTimeout(redirigir, 2000);
+                    setTimeout(redirigir, 2000);
 
-            }
-    })
-}
-</script>
+                }
+            })
+        }
+    </script>
 </body>
+
 </html>

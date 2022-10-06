@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppMovie.Migrations
 {
     [DbContext(typeof(AppMovieContext))]
-    [Migration("20221004035226_MigrationReturnModels")]
-    partial class MigrationReturnModels
+    [Migration("20221005141443_ReturnDetaiTempssModels")]
+    partial class ReturnDetaiTempssModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -403,13 +403,13 @@ namespace AppMovie.Migrations
             modelBuilder.Entity("AppMovie.Models.ReturnDetail", b =>
                 {
                     b.HasOne("AppMovie.Models.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("ReturnDetails")
                         .HasForeignKey("MovieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AppMovie.Models.Return", "Return")
-                        .WithMany("ReturnDetails")
+                        .WithMany("ReturnDetail")
                         .HasForeignKey("ReturnID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -437,6 +437,8 @@ namespace AppMovie.Migrations
             modelBuilder.Entity("AppMovie.Models.Movie", b =>
                 {
                     b.Navigation("RentalDetails");
+
+                    b.Navigation("ReturnDetails");
                 });
 
             modelBuilder.Entity("AppMovie.Models.Partner", b =>
@@ -456,7 +458,7 @@ namespace AppMovie.Migrations
 
             modelBuilder.Entity("AppMovie.Models.Return", b =>
                 {
-                    b.Navigation("ReturnDetails");
+                    b.Navigation("ReturnDetail");
                 });
 
             modelBuilder.Entity("AppMovie.Models.Section", b =>

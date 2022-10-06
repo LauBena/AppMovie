@@ -24,23 +24,32 @@ namespace AppMovie.Models
 
         [Display(Name = "Sección")]
         public int SectionID { get; set; }
+
+        [Display(Name = "Sección")]
         public virtual Section? Section { get; set; }
 
 
         [Display(Name = "Género")]
         public int GenderID { get; set; }
+
+        [Display(Name = "Género")]
         public virtual Gender? Gender  { get; set; }
 
 
 
         [Display(Name = "Productor")]
         public int ProducerID { get; set; }
+
+        [Display(Name = "Productor")]
         public virtual Producer? Producer { get; set; }
 
         public bool EstaAlquilada { get; set; }
+<<<<<<< HEAD
 
         public virtual ICollection<RentalDetail>? RentalDetails { get; set; }
 
         public virtual ICollection<ReturnDetail>? ReturnDetails { get; set; }
+=======
+>>>>>>> 7d8c6605bc01b08ede6c54dbcae610e4e52cb1a0
     }
 }

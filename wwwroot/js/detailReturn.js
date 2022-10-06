@@ -1,12 +1,12 @@
-function SearchMovie(rentalID) {
+function SearchMovieReturn(returnID) {
     // console.log("Busca la movie");
 
     $("#tableMovies").empty();
 
     $.ajax({
         type: "GET",
-        url: "../../Rentals/SearchMovie",
-        data: { RentalID: rentalID},
+        url: "../../Returns/SearchMovie",
+        data: { ReturnID: returnID},
         success: function(ListadoMovie) {
 
             $.each(ListadoMovie, function(index, item){

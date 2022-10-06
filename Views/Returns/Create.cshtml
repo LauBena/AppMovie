@@ -13,9 +13,25 @@
 </head>
 <body>
 
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+      </div>
+      <div class="modal-body">
+        <select id="MovieID" class ="form-control" asp-items="ViewBag.MovieID"></select>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn-create" onclick="AddMovieReturnTemp();">Devolver Pelicula</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h4>Return</h4>
-<hr />
+<h4>Devolucion</h4>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -30,15 +46,69 @@
                 <select asp-for="PartnerID" class ="form-control" asp-items="ViewBag.PartnerID"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Finalizar Devolucion" class="btn-create" />
+                <button onclick="CancelReturn();" class="btn-create2">Cancelar devolucion</button>
             </div>
         </form>
     </div>
 </div>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titulo de la pelicula</th>
+            <th>
+              <button type="button" class="btn-model" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Peliculas</button>
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tableMovies">
+@* @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a>Eliminar</a>
+            </td>
+        </tr>
+} *@
+    </tbody>
+</table>
+
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
+
+<script>
+  function AddMovieReturnTemp() {
+    //console.log("Guarda la pelicula");
+    var movieID = $('#MovieID').val(); //con json busca el elemento que se llame MovieID
+
+    $.ajax({
+        type: "POST", //cuando queremos guardar informacion
+        url: '../../Returns/AddMovieTemp',
+        data: {MovieID: movieID}, //puede estar vacio o no
+        success: function(resultado) {
+          if(resultado == true){
+            $('#staticBackdrop').modal('hide');
+
+            SearchMovieTemp();
+
+            location.href = "../../Returns/Create"; //recarga la pagina
+
+
+          }
+          else {
+            alert("No se pudo agregar");
+          }
+        },
+        error: function(result){
+          console.log("Error debido a: " + result);
+        }
+    });
+  }
+</script>
+<script>
+  window.onload = CargarPagReturn();
+</script>
 
 </body>
 </html>
