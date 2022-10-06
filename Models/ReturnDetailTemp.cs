@@ -11,7 +11,7 @@ namespace AppMovie.Models
         public int MovieID { get; set; }
 
 
-        //[Display(Name = "Nombre de la Película")]
+        [Display(Name = "Nombre de la Película")]
         public string? MovieName { get; set; }
     }
 }
