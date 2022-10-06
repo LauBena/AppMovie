@@ -1,6 +1,6 @@
-window.onload = CargarPagina();
+window.onload = CargarPagReturn();
 
-function CargarPagina(){
+function CargarPagReturn(){
     SearchMovieTemp();
 }
 

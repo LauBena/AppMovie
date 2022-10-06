@@ -1,4 +1,4 @@
-function SearchMovie(returnID) {
+function SearchMovieReturn(returnID) {
     // console.log("Busca la movie");
 
     $("#tableMovies").empty();

@@ -24,8 +24,7 @@
         <select id="MovieID" class ="form-control" asp-items="ViewBag.MovieID"></select>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" onclick="AddMovieTemp();">Agregar</button>
+        <a type="button" class="btn-create" onclick="AddMovieReturnTemp();">Devolver Pelicula</a>
       </div>
     </div>
   </div>
@@ -48,7 +47,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Finalizar Devolucion" class="btn-create" />
-                <button onclick="CancelReturn();" class="btn"></button>
+                <button onclick="CancelReturn();" class="btn-create2">Cancelar devolucion</button>
             </div>
         </form>
     </div>
@@ -59,9 +58,8 @@
         <tr>
             <th>Titulo de la pelicula</th>
             <th>
-<button type="button" class="btn-model" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Agregar Peliculas
-</button></th>
+              <button type="button" class="btn-model" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Peliculas</button>
+            </th>
         </tr>
     </thead>
     <tbody id="tableMovies">
@@ -80,7 +78,7 @@
 </div>
 
 <script>
-  function AddMovieTemp() {
+  function AddMovieReturnTemp() {
     //console.log("Guarda la pelicula");
     var movieID = $('#MovieID').val(); //con json busca el elemento que se llame MovieID
 
@@ -107,6 +105,9 @@
         }
     });
   }
+</script>
+<script>
+  window.onload = CargarPagReturn();
 </script>
 
 </body>

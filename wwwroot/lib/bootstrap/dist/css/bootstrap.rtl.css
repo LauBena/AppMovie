@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*!
+/*
  * Bootstrap v5.1.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
@@ -79,7 +79,7 @@ body {
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
-  -webkit-text-size-adjust: 100%;
+  /* -webkit-text-size-adjust: 100%; */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -301,7 +301,7 @@ table {
 }
 
 caption {
-  padding-top: 0.5rem;
+  /* padding-top: 0.5rem; */
   padding-bottom: 0.5rem;
   color: #6c757d;
   text-align: right;
@@ -309,7 +309,7 @@ caption {
 
 th {
   text-align: inherit;
-  text-align: -webkit-match-parent;
+  /* text-align: -webkit-match-parent; */
 }
 
 thead,
