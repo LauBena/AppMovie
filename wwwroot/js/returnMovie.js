@@ -51,7 +51,7 @@ function SearchMovieReturnTemp() {
     })
 }
 
-function QuitarMovie(id){
+function QuitarReturn(id){
     console.log("Peli eliminada");
     console.log(id);
 

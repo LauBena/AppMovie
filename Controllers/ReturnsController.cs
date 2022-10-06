@@ -190,7 +190,7 @@ namespace AppMovie.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public JsonResult AddMovieTemp(int MovieID) //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        public JsonResult AddMovieReturnTemp(int MovieID) //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
         {
             var resultado = true;
             using (var transaccion = _context.Database.BeginTransaction())
@@ -224,7 +224,7 @@ namespace AppMovie.Controllers
             return Json(resultado);
         }
 
-        public JsonResult CancelRental() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        public JsonResult CancelReturn() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
         {
             var resultado = false;
             using (var transaccion = _context.Database.BeginTransaction())
@@ -256,7 +256,7 @@ namespace AppMovie.Controllers
             return Json(resultado);
         }
 
-        public JsonResult SearchMovieTemp() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+        public JsonResult SearchMovieReturnTemp() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
         {
 
             List<ReturnDetailTemp> ListadoMovieTemp = new List<ReturnDetailTemp> ();
@@ -275,7 +275,7 @@ namespace AppMovie.Controllers
             return Json(ListadoMovieTemp);
         }
 
-        public JsonResult SearchMovie(int ReturnID)
+        public JsonResult SearchMovieReturn(int ReturnID)
         {
 
             List<ReturnDetail> ListadoMovie = new List<ReturnDetail>();
@@ -290,7 +290,7 @@ namespace AppMovie.Controllers
         }
 
 //Agregamos el QuitarMovie
-        public JsonResult QuitarMovie(int MovieID)
+        public JsonResult QuitarReturn(int MovieID)
         {
             var resultado = false;
 
