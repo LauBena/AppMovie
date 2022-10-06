@@ -1,7 +1,7 @@
 window.onload = CargarPagReturn();
 
 function CargarPagReturn(){
-    SearchMovieTemp();
+    SearchMovieReturnTemp();
 }
 
 function CancelReturn() {
@@ -22,7 +22,7 @@ function CancelReturn() {
     })
 }
 
-function SearchMovieTemp() {
+function SearchMovieReturnTemp() {
     //console.log("Busca la movie");
 
     $("#tableMovies").empty();

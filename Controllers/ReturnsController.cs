@@ -58,7 +58,7 @@ namespace AppMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RentalID,RentalDate,PartnerID")] Return Return)
+        public async Task<IActionResult> Create([Bind("RentalID,RentalDate,PartnerID")] Return @return)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace AppMovie.Controllers
             {
                 try
                 {
-                    _context.Add(Return);
+                    _context.Add(@return);
                     await _context.SaveChangesAsync();
 
 
@@ -75,7 +75,7 @@ namespace AppMovie.Controllers
                     {
                         var details = new ReturnDetail
                         {
-                            ReturnID = Return.ReturnID,
+                            ReturnID = @return.ReturnID,
                             MovieID = item.MovieID,
                             MovieName = item.MovieName
                         };
@@ -97,10 +97,63 @@ namespace AppMovie.Controllers
             }
 
             }
-            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", Return.PartnerID);
+            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
             ViewData["MovieID"] = new SelectList(_context.Movie, "MovieID", "MovieName");
             ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == true), "MovieID", "MovieName");
-            return View(Return);
+            return View(@return);
+        }
+
+        // GET: Returns/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.Return == null)
+            {
+                return NotFound();
+            }
+
+            var @return = await _context.Return.FindAsync(id);
+            if (@return == null)
+            {
+                return NotFound();
+            }
+            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
+            return View(@return);
+        }
+
+        // POST: Returns/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ReturnID,ReturnDate,PartnerID")] Return @return)
+        {
+            if (id != @return.ReturnID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(@return);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ReturnExists(@return.ReturnID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", @return.PartnerID);
+            return View(@return);
         }
 
 

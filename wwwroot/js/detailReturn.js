@@ -5,7 +5,7 @@ function SearchMovieReturn(returnID) {
 
     $.ajax({
         type: "GET",
-        url: "../../Returns/SearchMovie",
+        url: "../../Returns/SearchMovieReturn",
         data: { ReturnID: returnID},
         success: function(ListadoMovie) {
 
