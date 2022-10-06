@@ -14,6 +14,8 @@ namespace AppMovie.Models
 
         [Display(Name = "Socio")]
         public int PartnerID { get; set; }
+
+        [Display(Name = "Socio")]
         public virtual Partner? Partner { get; set; }
 
         public virtual ICollection<RentalDetail>? RentalDetails { get; set; }
