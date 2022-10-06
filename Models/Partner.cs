@@ -40,10 +40,8 @@ namespace AppMovie.Models {
 
         [Display(Name = "Localidad")]
         public int LocationID { get; set; }
+
+        [Display(Name = "Localidad")]
         public virtual Location? Locations { get; set; }
-
-        public virtual ICollection<Rental>? Rentals { get; set; }
-
-        public virtual ICollection<Return>? Returns { get; set; }
     }
 }
