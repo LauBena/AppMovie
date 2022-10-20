@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using AppMovie.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // if (builder.Environment.IsDevelopment())
@@ -14,6 +16,9 @@ var builder = WebApplication.CreateBuilder(args);
 // }
 builder.Services.AddDbContext<AppMovieContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppMovieContext") ?? throw new InvalidOperationException("Connection string 'AppMovieContext' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<AppMovieContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -32,6 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
