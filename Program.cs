@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
-using AppMovie.Data;
+using AppMovie.Areas.Identity.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // if (builder.Environment.IsDevelopment())
