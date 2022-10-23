@@ -17,8 +17,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppMovieContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppMovieContext") ?? throw new InvalidOperationException("Connection string 'AppMovieContext' not found.")));
 
+builder.Services.AddDbContext<AppMovieIdentityDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AppMovieContext") ?? throw new InvalidOperationException("Connection string 'AppMovieContext' not found.")));
+
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<AppMovieContext>();
+    .AddEntityFrameworkStores<AppMovieIdentityDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -25,16 +25,16 @@ function CancelReturn() {
 function SearchMovieReturnTemp() {
     //console.log("Busca la movie");
 
-    $("#tableMovies").empty();
+    $("#Movie-Return").empty();
 
     $.ajax({
         type: "GET",
-        url: "../../Returns/SearchMovieTemp",
+        url: "../../Returns/SearchMovieReturnTemp",
         data: {},
         success: function(ListadoMovieTemp) {
 
             $.each(ListadoMovieTemp, function(index, item){
-                $("#tableMovies").append(
+                $("#Movie-Return").append(
                     "<tr>" +
                         "<th>" + item.movieName + "</th>" +
                         "<th>" +                                            //juego de concatenacion
