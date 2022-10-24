@@ -18,7 +18,7 @@ builder.Services.AddDbContext<AppMovieContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppMovieContext") ?? throw new InvalidOperationException("Connection string 'AppMovieContext' not found.")));
 
 builder.Services.AddDbContext<AppMovieIdentityDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AppMovieIdentityDbContext") ?? throw new InvalidOperationException("Connection string 'AppMovieContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AppMovieContext") ?? throw new InvalidOperationException("Connection string 'AppMovieContext' not found.")));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<AppMovieIdentityDbContext>();
