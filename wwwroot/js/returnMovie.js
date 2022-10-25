@@ -29,12 +29,12 @@ function SearchMovieReturnTemp() {
 
     $.ajax({
         type: "GET",
-        url: "../../Returns/SearchMovieTemp",
+        url: "../../Returns/SearchMovieReturnTemp",
         data: {},
         success: function(ListadoMovieTemp) {
 
             $.each(ListadoMovieTemp, function(index, item){
-                $("#tableMovies").append(
+                $("#Movie-Return").append(
                     "<tr>" +
                         "<th>" + item.movieName + "</th>" +
                         "<th>" +                                            //juego de concatenacion
@@ -57,7 +57,7 @@ function QuitarReturn(id){
 
     $.ajax({
         type: "POST",
-        url: "../../Returns/QuitarMovie",
+        url: "../../Returns/QuitarReturn",
         data: {MovieID: id},
         success: function(resultado) {
             if(resultado == false){

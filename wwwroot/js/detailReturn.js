@@ -1,7 +1,7 @@
 function SearchMovieReturn(returnID) {
     // console.log("Busca la movie");
 
-    $("#tableMovies").empty();
+    $("#Movie-Return").empty();
 
     $.ajax({
         type: "GET",
@@ -10,7 +10,7 @@ function SearchMovieReturn(returnID) {
         success: function(ListadoMovie) {
 
             $.each(ListadoMovie, function(index, item){
-                $("#tableMovies").append(
+                $("#Movie-Return").append(
                     "<tr>" +
                         "<th>" + item.movieName + "</th>" +
                     "</tr>"

@@ -1,7 +1,6 @@
 @model AppMovie.Models.Return
 
 @{
-
     Layout = "_Layout";
 }
 
@@ -16,11 +15,10 @@
 
 <body>
 
-
-    <br>
-    <h4>Devolucion</h4>
-    <div class="container-box">
-            <hr>
+    <div>
+        <h4>Devolucion</h4>
+        <div class="container-box">
+            <hr />
             <dl class="row">
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.ReturnDate)
@@ -50,7 +48,6 @@
         </div>
         <br>
     </div>
-
     <script src="~/js/detailReturn.js" asp-append-version="true"></script>
     <script>
         window.onload = SearchMovieReturn(@Model?.ReturnID);

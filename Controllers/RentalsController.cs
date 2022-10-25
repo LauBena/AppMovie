@@ -98,6 +98,7 @@ namespace AppMovie.Controllers
 
             }
             ViewData["PartnerID"] = new SelectList(_context.Partner, "PartnerID", "PartnerName", rental.PartnerID);
+            ViewData["MovieID"] = new SelectList(_context.Movie, "MovieID", "MovieName");
             ViewData["MovieID"] = new SelectList(_context.Movie.Where(x => x.EstaAlquilada == false), "MovieID", "MovieName");
             return View(rental);
         }

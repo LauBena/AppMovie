@@ -1,9 +1,6 @@
 @model IEnumerable<AppMovie.Models.Return>
 
 @{
-
-
-
     Layout = "_Layout";
 }
 
@@ -17,9 +14,8 @@
 </head>
 
 <body>
-
     <p>
-        <a class="create-link" asp-action="Create">Crear devolucion</a>
+        <a asp-action="Create">Create Devolucion</a>
     </p>
     <div class="container-box">
         <div class="container-scroll">
@@ -37,7 +33,6 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
-
                     {
                         <tr>
                             <td>
@@ -47,14 +42,11 @@
                                 @Html.DisplayFor(modelItem => item.Partner.PartnerName)
                             </td>
                             <td>
-                                <a class="button-Detalles" asp-action="Details" asp-route-id="@item.ReturnID">
-                                    <span> Detalle de la devolucion</span>
+                                <a class="button-detalles" asp-action="Details" asp-route-id="@item.ReturnID">
+                                    <span>Detalle de la devolucion</span>
                                 </a>
                             </td>
                         </tr>
-
-
-
                     }
                 </tbody>
             </table>
