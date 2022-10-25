@@ -105,12 +105,12 @@ text-flicker-in-glow{0%
 }
 
 
-h4{
+h4, h1{
   color: white;
   font-family: 'Monoton', cursive;
 }
 
-a, th, label, nav-item, td{
+a, h2, h3, p, th, label, nav-item, td{
   color: white;
   text-decoration: none;
 }
@@ -293,6 +293,18 @@ hr{
   width: 100%;
   height: 100%;
   background: rgba(85, 70, 93, 0.452);
+  border-top: 20px;
+  border-left: 20px;
+  border-radius:20px;
+  border-bottom-right-radius: 20px;
+  white-space: initial;
+}
+
+.container-box2{
+  position: relative;
+  width: 70%;
+  height: 70%;
+  background: rgba(173, 155, 182, 0.251);
   border-top: 20px;
   border-left: 20px;
   border-radius:20px;

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AppMovie.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppMovie.Controllers
 {
+    [Authorize]
     public class MoviesController : Controller
     {
         private readonly AppMovieContext _context;
@@ -136,6 +138,7 @@ namespace AppMovie.Controllers
         // POST: Movies/Delete/5
         // [HttpPost, ActionName("Delete")]
         // [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var movie = await _context.Movie.FindAsync(id);
