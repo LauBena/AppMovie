@@ -15,7 +15,7 @@
 
 <body>
     <p>
-        <a asp-action="Create">Create Devolucion</a>
+        <a class="create-link" asp-action="Create">Crear Devolucion</a>
     </p>
     <div class="container-box">
         <div class="container-scroll">
@@ -42,7 +42,7 @@
                                 @Html.DisplayFor(modelItem => item.Partner.PartnerName)
                             </td>
                             <td>
-                                <a class="button-detalles" asp-action="Details" asp-route-id="@item.ReturnID">
+                                <a class="button-Detalles" asp-action="Details" asp-route-id="@item.ReturnID">
                                     <span>Detalle de la devolucion</span>
                                 </a>
                             </td>

@@ -30,7 +30,7 @@ namespace AppMovie.Controllers
         // GET: Returns/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Return == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -259,7 +259,7 @@ namespace AppMovie.Controllers
         public JsonResult SearchMovieReturnTemp() //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
         {
 
-            List<ReturnDetailTemp> ListadoMovieTemp = new List<ReturnDetailTemp> ();
+            List<ReturnDetailTemp> ListadoMovieReturnTemp = new List<ReturnDetailTemp> ();
 
             var returnDetailTemp = (from a in _context.ReturnDetailTemp select a).ToList();
             foreach (var item in returnDetailTemp){
@@ -267,26 +267,26 @@ namespace AppMovie.Controllers
                 {
                     // MovieID = item.MovieID,
                     // MovieName = item.MovieName
-                    ListadoMovieTemp.Add(item);
+                    ListadoMovieReturnTemp.Add(item);
                 };
                 // ListadoMovieTemp.Add(mostrarMovie);
             }
 
-            return Json(ListadoMovieTemp);
+            return Json(ListadoMovieReturnTemp);
         }
 
         public JsonResult SearchMovieReturn(int ReturnID)
         {
 
-            List<ReturnDetail> ListadoMovie = new List<ReturnDetail>();
+            List<ReturnDetail> ListadoMovieReturn = new List<ReturnDetail>();
 
             var returnDetail = (from a in _context.ReturnDetail where a.ReturnID == ReturnID select a).ToList();
             foreach (var item in returnDetail)
 
             {
-                ListadoMovie.Add(item);
+                ListadoMovieReturn.Add(item);
             }
-            return Json(ListadoMovie);
+            return Json(ListadoMovieReturn);
         }
 
 //Agregamos el QuitarMovie

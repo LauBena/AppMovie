@@ -7,9 +7,9 @@ function SearchMovieReturn(returnID) {
         type: "GET",
         url: "../../Returns/SearchMovieReturn",
         data: { ReturnID: returnID},
-        success: function(ListadoMovie) {
+        success: function(ListadoMovieReturn) {
 
-            $.each(ListadoMovie, function(index, item){
+            $.each(ListadoMovieReturn, function(index, item){
                 $("#Movie-Return").append(
                     "<tr>" +
                         "<th>" + item.movieName + "</th>" +

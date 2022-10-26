@@ -2,6 +2,8 @@
 
 @{
 
+
+
     Layout = "_Layout";
 }
 
@@ -28,7 +30,8 @@
                     <select id="MovieID" class="form-control" asp-items="ViewBag.MovieID"></select>
                 </div>
                 <div class="modal-footer">
-                    <a type="button" class="button" onclick="AddMovieReturnTemp();">Devolver Pelicula</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="AddMovieReturnTemp();">Agregar</button>
                 </div>
             </div>
         </div>

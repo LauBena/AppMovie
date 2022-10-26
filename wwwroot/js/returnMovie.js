@@ -38,7 +38,7 @@ function SearchMovieReturnTemp() {
                     "<tr>" +
                         "<th>" + item.movieName + "</th>" +
                         "<th>" +                                            //juego de concatenacion
-                        "<button class='btn-create2' onclick='QuitarMovie(" + item.movieID + ");'>Eliminar</button>" +
+                        "<button class='btn-create2' onclick='QuitarReturn(" + item.movieID + ");'>Eliminar</button>" +
                         "</th>" +
                     "</tr>"
                 );
