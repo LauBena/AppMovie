@@ -190,7 +190,7 @@ namespace AppMovie.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-         public JsonResult AddMovieReturnTemp(int MovieID) //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
+         public JsonResult AddMovieReturn(int MovieID) //tenemos que decirle que recibe un valor entero y pasarle el nombre del valor a agregar
         {
             var resultado = true;
             using (var transaccion = _context.Database.BeginTransaction())

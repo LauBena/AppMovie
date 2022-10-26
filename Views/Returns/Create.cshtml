@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="AddMovieReturnTemp();">Agregar</button>
+                    <button type="button" class="btn btn-primary" onclick="AddMovieReturn();">Agregar</button>
                 </div>
             </div>
         </div>
@@ -86,19 +86,19 @@
     </div>
 
     <script>
-        function AddMovieReturnTemp() {
+        function AddMovieReturn() {
             //console.log("Guarda la pelicula");
             var movieID = $('#MovieID').val(); //con json busca el elemento que se llame MovieID
 
             $.ajax({
                 type: "POST", //cuando queremos guardar informacion
-                url: '../../Returns/AddMovieReturnTemp',
+                url: '../../Returns/AddMovieReturn',
                 data: { MovieID: movieID }, //puede estar vacio o no
                 success: function (resultado) {
                     if (resultado == true) {
                         $('#staticBackdrop').modal('hide');
 
-                        SearchMovieTemp();
+                        SearchReturnTemp();
 
                         location.href = "../../Returns/Create"; //recarga la pagina
 

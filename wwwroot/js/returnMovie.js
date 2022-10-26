@@ -25,7 +25,7 @@ function CancelReturn() {
 function SearchMovieReturnTemp() {
     //console.log("Busca la movie");
 
-    $("#tableMovies").empty();
+    $("#Movie-Return").empty();
 
     $.ajax({
         type: "GET",
