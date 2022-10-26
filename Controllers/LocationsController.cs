@@ -148,6 +148,16 @@ namespace AppMovie.Controllers
         {
             var location = await _context.Location.FindAsync(id);
             if(location != null){
+                var locationInPartner = (from a in _context.Partner where a.LocationID == id select a).ToList();
+                if(locationInPartner.Count == 0)
+                {
+                    _context.Location.Remove(location);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+
+                }
             _context.Location.Remove(location);
             await _context.SaveChangesAsync();
             }

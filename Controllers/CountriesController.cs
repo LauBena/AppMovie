@@ -141,8 +141,16 @@ namespace AppMovie.Controllers
         {
             var country = await _context.Country.FindAsync(id);
             if(country != null){
-            _context.Country.Remove(country);
-            await _context.SaveChangesAsync();
+                var countryInLocation = (from a in _context.Location where a.CountryID == id select a).ToList();
+                if(countryInLocation.Count == 0)
+                {
+                    _context.Country.Remove(country);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+
+                }
             }
 
             return RedirectToAction(nameof(Index));
