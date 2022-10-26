@@ -150,8 +150,16 @@ namespace AppMovie.Controllers
         {
             var partner = await _context.Partner.FindAsync(id);
             if(partner != null){
-            _context.Partner.Remove(partner);
-            await _context.SaveChangesAsync();
+                var partnerInRental = (from a in _context.Rental where a.PartnerID == id select a).ToList();
+                if(partnerInRental.Count == 0)
+                {
+                    _context.Partner.Remove(partner);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+
+                }
             }
 
             return RedirectToAction(nameof(Index));
