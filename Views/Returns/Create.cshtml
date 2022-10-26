@@ -1,6 +1,7 @@
 @model AppMovie.Models.Return
 
 @{
+
     Layout = "_Layout";
 }
 
@@ -110,10 +111,11 @@
             });
         }
     </script>
+    @section Scripts{
     <script>
         window.onload = CargarPagReturn();
     </script>
-
+    }
 </body>
 
 </html>

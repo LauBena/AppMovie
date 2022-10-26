@@ -39,7 +39,7 @@
                         <th>Titulo de la pelicula</th>
                     </tr>
                 </thead>
-                <tbody id="tableMovies">
+                <tbody id="Movie-Return">
                 </tbody>
             </table>
         </div>
@@ -49,9 +49,11 @@
         <br>
     </div>
     <script src="~/js/detailReturn.js" asp-append-version="true"></script>
+@section Scripts{
     <script>
         window.onload = SearchMovieReturn(@Model?.ReturnID);
     </script>
+    }
 </body>
 
 </html>
