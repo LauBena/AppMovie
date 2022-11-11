@@ -21,6 +21,7 @@ namespace AppMovie.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         // GET: Sections
         public async Task<IActionResult> Index()
         {
